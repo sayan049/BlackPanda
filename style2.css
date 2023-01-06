@@ -6,7 +6,7 @@ list-style: none;
 }
 .lowerNav{
    max-width: 100vw;
-    height: 50px;
+    height: 40px;
    
     border-bottom: 0.5px solid #eee;
 }
@@ -15,7 +15,7 @@ list-style: none;
     margin: auto;
 }
 .marginLowerNav{
-    padding-top: 17px;
+    padding-top: 10px;
 }
 .manDropdown{
     display: none;
