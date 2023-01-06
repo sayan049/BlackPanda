@@ -5,3 +5,6 @@
     margin: 0;
     padding: 0;
 }
+.vw{
+    max-width: 70vw;
+}
