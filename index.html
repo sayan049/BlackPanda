@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="util.css">
     <link rel="stylesheet" href="style2.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 </head>
 
 <body>
@@ -25,45 +27,58 @@
         </nav>
         <nav class="main-nav">
             <ul class="main-ul flex">
-                <li class="logo">logo</li>
-                <li class="search-engine">search</li>
-                <li class="profile">profile</li>
-                <li class="wishlist">wishlist</li>
-                <li class="bag">bag</li>
-                <li class="language">language</li>
+                <div class="logo-to-search flex">
+                    <li class="logo">logo</li>
+                    <li class="search-engine"><form class="search-box">
+                        <input type="text" placeholder="Search by Product, Category or collection"/>
+                        <button type="reset"></button>
+                      </form></li>
+                </div>
+                <div class="profile-to-language flex ">
+                    <li class="profile">profile</li>
+                    <li class="wishlist">wishlist</li>
+                    <li class="bag">bag</li>
+                    <li class="language">language</li>
+                </div>
             </ul>
         </nav>
         <nav class="lowerNav">
-          <div class="lowerNavObjects">
-              <ul class="flex left marginLowerNav">
-                <li class="cursurPointer">LIVE NOW!</li>
-                <li class="man cursurPointer">man
-                    <div class="manDropdown">
-                        <ul class="dropDown">
-                            <li><a href="#">abc</a></li><li> <a href="#">abc</a></li><li> <a href="#">abc</a></li>
+            <div class="lowerNavObjects">
+                <ul class="flex left marginLowerNav">
+                    <li class="cursurPointer">LIVE NOW!</li>
+                    <li class="man cursurPointer">man
+                        <div class="manDropdown">
+                            <ul class="dropDown">
+                                <li><a href="#">abc</a></li>
+                                <li> <a href="#">abc</a></li>
+                                <li> <a href="#">abc</a></li>
 
-                        </ul>
-                    </div>
+                            </ul>
+                        </div>
 
-                </li>
-                <li class="woman cursurPointer">woman
-                    <div class="womanDropdown">
-                        <ul class="dropDown">
-                            <li><a href="#">abc</a></li><li> <a href="#">abc</a></li><li> <a href="#">abc</a></li>
+                    </li>
+                    <li class="woman cursurPointer">woman
+                        <div class="womanDropdown">
+                            <ul class="dropDown">
+                                <li><a href="#">abc</a></li>
+                                <li> <a href="#">abc</a></li>
+                                <li> <a href="#">abc</a></li>
 
-                        </ul>
-                    </div>
-                </li>
-                <li class="kid cursurPointer">kids
-                    <div class="kidDropdown">
-                        <ul class="dropDown">
-                            <li><a href="#">abc</a></li><li> <a href="#">abc</a></li><li> <a href="#">abc</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="kid cursurPointer">kids
+                        <div class="kidDropdown">
+                            <ul class="dropDown">
+                                <li><a href="#">abc</a></li>
+                                <li> <a href="#">abc</a></li>
+                                <li> <a href="#">abc</a></li>
 
-                        </ul>
-                    </div>
-                </li>
-            </ul>
-        </div>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
         </nav>
     </header>
 
