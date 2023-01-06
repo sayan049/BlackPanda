@@ -5,10 +5,14 @@ list-style: none;
 
 }
 .lowerNav{
-    max-width: 500px;
+   max-width: 100vw;
     height: 50px;
+   
+    border-bottom: solid #eee;
+}
+.lowerNavObjects{
+    max-width: 500px;
     margin: auto;
-    border: solid #eee;
 }
 .marginLowerNav{
     padding-top: 17px;
