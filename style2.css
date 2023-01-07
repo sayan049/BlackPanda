@@ -1,19 +1,21 @@
-
-.lowerNav{
-   max-width: 100vw;
+.lowerNav {
+    max-width: 100vw;
     height: 40px;
-   
+
     border-bottom: 0.5px solid #eee;
 }
-.lowerNavObjects{
+
+.lowerNavObjects {
     max-width: 500px;
     margin: auto;
 }
-.marginLowerNav{
+
+.marginLowerNav {
     padding-top: 10px;
 }
-.manDropdown{
-    display:none;
+
+.manDropdown {
+    display: none;
     position: absolute;
     background-color: rgb(255, 255, 255);
     width: 471px;
@@ -23,12 +25,16 @@
     border: solid #eee;
     margin: 12px -82px;
     padding: 20px;
+    transition: all 1.5s ease;
 }
-.man:hover .manDropdown{
+
+.man:hover .manDropdown {
     display: block;
-  
+
 }
-.womanDropdown{
+
+
+.womanDropdown {
     display: none;
     position: absolute;
     background-color: rgb(255, 255, 255);
@@ -40,11 +46,13 @@
     margin: 12px -213px;
     padding: 20px;
 }
-.woman:hover .womanDropdown{
+
+.woman:hover .womanDropdown {
     display: block;
-   }
-.kidDropdown{
-    display:none;
+}
+
+.kidDropdown {
+    display: none;
     position: absolute;
     background-color: rgb(255, 255, 255);
     width: 471px;
@@ -54,28 +62,38 @@
     border: solid #eee;
     margin: 12px -365px;
     padding: 20px;
- }
-.kid:hover .kidDropdown{
+}
+
+.kid:hover .kidDropdown {
     display: block;
-   }
-   .dropDown li:hover a{background-color: #f1f1f1;} 
-  
-.dropDown li a{
+}
+
+.dropDown li:hover a {
+    background-color: #f1f1f1;
+}
+
+.dropDown li a {
     color: black;
     padding: 10px 16px;
     display: block;
     /* width: 8.52vw; */
     font-size: small;
-   font-weight: 100;
+    font-weight: 100;
 }
-.dropDown li{
+
+.dropDown li {
     display: flex;
-   height: 40px;
-   list-style: none;
+    height: 40px;
+    list-style: none;
 }
-.dropDown h4{padding-left: 20px;
-    padding-top: 3px;}
-.cursurPointer{
+
+.dropDown h4 {
+    padding-left: 20px;
+    padding-top: 3px;
+}
+
+.cursurPointer {
     cursor: pointer;
 }
+
 /* .dropDown{position: fixed;} */
