@@ -1,13 +1,17 @@
-.flex{
+.flex {
     display: flex;
 }
-*{
+
+* {
     margin: 0;
     padding: 0;
 }
-.vw{
+
+.vw {
     max-width: 70vw;
 }
+
 .z1{z-index: 2;}
 li{list-style: none;}
 a{text-decoration: none;}
+
