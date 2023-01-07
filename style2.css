@@ -21,8 +21,8 @@
     width: 471px;
     height: 300px;
     z-index: 1;
-    border-radius: 3%;
-    border: solid #eee;
+    
+    border: 1px solid #eee;
     margin: 12px -82px;
     padding: 20px;
     transition: all 1.5s ease;
@@ -41,8 +41,8 @@
     width: 471px;
     height: 300px;
     z-index: 1;
-    border-radius: 3%;
-    border: solid #eee;
+   
+    border: 1px solid #eee;
     margin: 12px -213px;
     padding: 20px;
 }
@@ -58,8 +58,8 @@
     width: 471px;
     height: 300px;
     z-index: 1;
-    border-radius: 3%;
-    border: solid #eee;
+    
+    border: 1px solid #eee;
     margin: 12px -365px;
     padding: 20px;
 }
