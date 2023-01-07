@@ -116,7 +116,7 @@
  .search-box input[type=text]:focus+button[type=reset]:after,
  .search-box input[type=text]:not(:placeholder-shown)+button[type=reset]:after {
    opacity: 1;
-   transition: top 150ms ease-out 950ms, right 150ms ease-out 950ms, opacity 150ms ease 950ms;
+   transition: top 150ms ease-out 950ms, left 150ms ease-out 950ms, opacity 150ms ease 950ms;
  }
 
  .search-box button[type=reset] {
@@ -131,7 +131,7 @@
    align-items: center;
    position: absolute;
    top: 0.55em;
-   right: 0.55em;
+   left: 0.55em;
    transform: rotate(-45deg) translateY(2.2em);
    transition: transform 150ms ease-out 150ms;
  }
@@ -229,4 +229,77 @@
 
  .dropdown-to-profile .btn-logout:hover {
    border: 1px solid red;
+ }
+
+ .panda1 {
+   /* animation: panda 10s linear  infinite  ease; */
+
+
+   animation-name: forword;
+   animation-duration: 10s;
+   animation-iteration-count: infinite;
+   animation-timing-function: linear;
+
+ }
+
+ @keyframes forword {
+
+   0% {
+     left: 0%;
+     opacity: 1;
+
+   }
+
+   99% {
+     left: 90%;
+     opacity: 1;
+
+   }
+
+   100% {
+     left: 100%;
+     opacity: 0;
+
+
+   }
+
+
+ }
+
+ .panda2 {
+   /* animation: panda 10s linear  infinite  ease; */
+
+
+   animation-name: backword;
+   animation-duration: 10s;
+   animation-iteration-count: infinite;
+   animation-timing-function: linear;
+   animation-direction: reverse;
+   animation-delay: 10s;
+
+ }
+
+ @keyframes backword {
+
+   0% {
+     left: 0%;
+     opacity: 0;
+
+
+
+   }
+   
+   99% {
+     left: 90%;
+     opacity: 1;
+
+   }
+
+   100% {
+     left: 100%;
+     opacity: 0;
+
+   }
+
+
  }
