@@ -236,7 +236,7 @@
 
 
    animation-name: forword;
-   animation-duration: 20s;
+   animation-duration: 60s;
    animation-iteration-count: infinite;
    animation-timing-function: linear;
 
@@ -272,7 +272,7 @@
 
 
    animation-name: backword;
-   animation-duration: 20s;
+   animation-duration: 60s;
    animation-iteration-count: infinite;
    animation-timing-function: linear;
    /* animation-direction: reverse; */
