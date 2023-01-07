@@ -236,7 +236,7 @@
 
 
    animation-name: forword;
-   animation-duration: 10s;
+   animation-duration: 60s;
    animation-iteration-count: infinite;
    animation-timing-function: linear;
 
@@ -250,14 +250,15 @@
 
    }
 
-   99% {
-     left: 90%;
+   50% {
+     left: 97%;
      opacity: 1;
 
    }
+   50.1%{opacity: 0;}
 
    100% {
-     left: 100%;
+     left: 97%;
      opacity: 0;
 
 
@@ -271,11 +272,11 @@
 
 
    animation-name: backword;
-   animation-duration: 10s;
+   animation-duration: 60s;
    animation-iteration-count: infinite;
    animation-timing-function: linear;
-   animation-direction: reverse;
-   animation-delay: 10s;
+   /* animation-direction: reverse; */
+   /* animation-delay: 10s; */
 
  }
 
@@ -284,20 +285,25 @@
    0% {
      left: 0%;
      opacity: 0;
-
-
-
    }
    
-   99% {
-     left: 90%;
-     opacity: 1;
+   25% {
+     left: 50%;
+     opacity: 0;
 
+   }
+   50%{
+    left: 0%;
+    opacity: 0;
+   }
+   50.1%{
+    left: 100%;
+    opacity: 1;
    }
 
    100% {
-     left: 100%;
-     opacity: 0;
+     left: 0%;
+     opacity: 1;
 
    }
 
