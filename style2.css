@@ -39,14 +39,16 @@ list-style: none;
     display: block;
    }
 .kidDropdown{
-    display:block;/**/
+    display:none;/**/
     position: absolute;
-    background-color: rgb(17, 181, 218);
+    background-color: rgb(255, 255, 255);
     width: 20vw;
     height: 300px;
     z-index: 1;
    border-radius: 3%;
-}
+   border: solid #eee;
+   right: 364px;
+ }
 .kid:hover .kidDropdown{
     display: block;
    }
@@ -54,10 +56,10 @@ list-style: none;
   
 .dropDown li a{
     color: black;
-    padding: 6px 6px;
+    padding: 1px 100px;
     text-decoration: none;
-    display: inline-block;
-    width: 9.52vw;
+    display: block;
+    /* width: 8.52vw; */
     font-size: small;
    font-weight: 100;
 }
@@ -65,7 +67,7 @@ list-style: none;
     display: inline;
     margin-right: -5px
 }
-.dropDown h4{padding-top: 17px;}
+.dropDown h3{padding: 18px 110px;}
 .cursurPointer{
     cursor: pointer;
 }
