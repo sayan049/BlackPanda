@@ -162,7 +162,7 @@
 
    border: 1px solid #EEE;
    margin: 56px -123px;
-
+   color: black;
    display: none;
    position: absolute;
    z-index: 1;
@@ -187,6 +187,7 @@
 
  .profile:hover {
    border-bottom: 3px solid black;
+   color: red;
 
  }
 
@@ -236,13 +237,17 @@
 
 
    animation-name: forword;
+
    animation-duration: 60s;
+
    animation-iteration-count: infinite;
    animation-timing-function: linear;
+
 
  }
 
  @keyframes forword {
+
 
    0% {
      left: 0%;
@@ -255,11 +260,16 @@
      opacity: 1;
 
    }
-   50.1%{opacity: 0;}
+
+   50.1% {
+     opacity: 0;
+   }
 
    100% {
+
      left: 97%;
      opacity: 0;
+
 
 
    }
@@ -275,30 +285,37 @@
    animation-duration: 60s;
    animation-iteration-count: infinite;
    animation-timing-function: linear;
+
    /* animation-direction: reverse; */
+
    /* animation-delay: 10s; */
 
  }
 
  @keyframes backword {
 
+
    0% {
      left: 0%;
+
      opacity: 0;
+
    }
-   
+
    25% {
      left: 50%;
      opacity: 0;
 
    }
-   50%{
-    left: 0%;
-    opacity: 0;
+
+   50% {
+     left: 0%;
+     opacity: 0;
    }
-   50.1%{
-    left: 100%;
-    opacity: 1;
+
+   50.1% {
+     left: 97%;
+     opacity: 1;
    }
 
    100% {
