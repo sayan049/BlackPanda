@@ -9,9 +9,16 @@
 
 .vw {
     max-width: 70vw;
+    margin: auto;
 }
 
 .z1{z-index: 2;}
 li{list-style: none;}
 a{text-decoration: none;}
 
+.vwlogin{
+    width: 70vw;
+}
+.vwlogo{
+    width: 57vw;
+}
