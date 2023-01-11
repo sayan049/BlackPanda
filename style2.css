@@ -133,7 +133,7 @@
     height: 60px;
     left: 95%;
     position: absolute;
-    top: 269%;
+    top: 1133px;
     transform: translateX(-50%) translateY(-50%);
     transition: transform 0.1s;
     width: 50px;
@@ -197,7 +197,7 @@
     height: 60px;
     left: 6%;
     position: absolute;
-    top: 269%;
+    top: 1133px;
     transform: translateX(-50%) translateY(-50%);
     transition: transform 0.1s;
     width: 50px;
