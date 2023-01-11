@@ -43,3 +43,6 @@ a {
 .leftmargin {
     margin-left: 25px;
 }
+.spacebetween{
+    justify-content: space-between;
+}

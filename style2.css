@@ -126,4 +126,134 @@
     border: 1px solid;
     margin-top: 21px;
     margin-left: 25px;
+    display: inline-block;
 }
+.arrowRight {
+    cursor: pointer;
+    height: 60px;
+    left: 95%;
+    position: absolute;
+    top: 269%;
+    transform: translateX(-50%) translateY(-50%);
+    transition: transform 0.1s;
+    width: 50px;
+  }
+  
+  .arrow-top, .arrow-bottom {
+    background-color: #666;
+    height: 4px;
+    left: -5px;
+    position: absolute;
+    top: 50%;
+    width: 100%;
+  }
+  
+  .arrow-top:after, .arrow-bottom:after {
+    background-color: #fff;
+    content: "";
+    height: 100%;
+    position: absolute;
+    top: 0;
+    transition: all 0.15s;
+  }
+  
+  .arrow-top {
+    transform: rotate(45deg);
+    transform-origin: bottom right;
+  }
+  
+  .arrow-top:after {
+    left: 100%;
+    right: 0;
+    transition-delay: 0s;
+  }
+  
+  .arrow-bottom {
+    transform: rotate(-45deg);
+    transform-origin: top right;
+  }
+  
+  .arrow-bottom:after {
+    left: 0;
+    right: 100%;
+    transition-delay: 0.15s;
+  }
+  
+  .arrowRight:hover .arrow-top:after {
+    left: 0;
+    transition-delay: 0.15s;
+  }
+  
+  .arrowRight:hover .arrow-bottom:after {
+    right: 0;
+    transition-delay: 0s;
+  }
+  
+  .arrowRight:active {
+    transform: translateX(-50%) translateY(-50%) scale(0.9);
+  }
+  .arrowLeft {
+    cursor: pointer;
+    height: 60px;
+    left: 6%;
+    position: absolute;
+    top: 269%;
+    transform: translateX(-50%) translateY(-50%);
+    transition: transform 0.1s;
+    width: 50px;
+  }
+  
+  .arrow-top1, .arrow-bottom1 {
+    background-color: #666;
+    height: 4px;
+    left: -5px;
+    position: absolute;
+    top: 50%;
+    width: 100%;
+  }
+  
+  .arrow-top1:after, .arrow-bottom1:after {
+    background-color: #fff;
+    content: "";
+    height: 100%;
+    position: absolute;
+    top: 0;
+    transition: all 0.15s;
+  }
+  
+  .arrow-top1 {
+    transform: rotate(135deg);
+    transform-origin: bottom right;
+  }
+  
+  .arrow-top1:after {
+    left: 100%;
+    right: 0;
+    transition-delay: 0s;
+  }
+  
+  .arrow-bottom1 {
+    transform: rotate(-135deg);
+    transform-origin: top right;
+    margin-top: 4px;
+  }
+  
+  .arrow-bottom1:after {
+    left: 0;
+    right: 100%;
+    transition-delay: 0.15s;
+  }
+  
+  .arrowLeft:hover .arrow-top1:after {
+    left: 0;
+    transition-delay: 0.15s;
+  }
+  
+  .arrowLeft:hover .arrow-bottom1:after {
+    right: 0;
+    transition-delay: 0s;
+  }
+  
+  .arrowLeft:active {
+    transform: translateX(-50%) translateY(-50%) scale(0.9);
+  }
