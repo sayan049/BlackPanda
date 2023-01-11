@@ -11,6 +11,7 @@ const handleMove = e => {
 document.onmousemove = e => handleMove(e);
 
 document.ontouchmove = e => handleMove(e.touches[0]);
+
  const rightSlide=document.getElementById("rightSlide");
  rightSlide.onclick=function (){
   document.getElementById("content").scrollLeft+=300;
@@ -19,3 +20,13 @@ const leftSlide=document.getElementById("leftSlide");
 leftSlide.onclick=function(){
   document.getElementById("content").scrollLeft-=300;
 }
+
+const sayan=document.getElementById("arrow1");
+sayan.onclick=function(){
+  document.getElementById("arrow2").scrollLeft+=510;
+}
+const sayan2=document.getElementById("arrow3");
+sayan2.onclick=function(){
+  document.getElementById("arrow2").scrollLeft-=510;
+}
+
