@@ -20,32 +20,41 @@
     background-color: rgb(255, 255, 255);
     width: 471px;
     height: 300px;
-    z-index: 1;
+    z-index: 3;
     
     border: 1px solid #eee;
     margin: 12px -82px;
     padding: 20px;
     transition: all 1.5s ease;
 }
-
+.manHover{height: 38px;
+    width: 74px;
+  display: none;
+    left: 44.4vw;
+    top: 72px;
+    border-bottom: solid black;
+   position: absolute;
+    z-index: -1;}
 .man:hover .manDropdown {
     display: block;
-
 }
-
-
+.man:hover {
+    border-bottom: 3px solid black;
+   
+}
 .womanDropdown {
     display: none;
     position: absolute;
     background-color: rgb(255, 255, 255);
     width: 471px;
     height: 300px;
-    z-index: 1;
+    z-index: 3;
    
     border: 1px solid #eee;
     margin: 12px -213px;
     padding: 20px;
 }
+.woman:hover{border-bottom: 3px solid;}
 
 .woman:hover .womanDropdown {
     display: block;
@@ -57,7 +66,7 @@
     background-color: rgb(255, 255, 255);
     width: 471px;
     height: 300px;
-    z-index: 1;
+    z-index: 3;
     
     border: 1px solid #eee;
     margin: 12px -365px;
@@ -67,7 +76,7 @@
 .kid:hover .kidDropdown {
     display: block;
 }
-
+.kid:hover{border-bottom: 3px solid;}
 .dropDown li:hover a {
     background-color: #f1f1f1;
 }
