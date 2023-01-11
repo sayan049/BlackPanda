@@ -364,7 +364,7 @@
   height: 60px;
   left: 95vw;
   position: absolute;
-  top: 38vw;
+  top: 580px;
   transform: translateX(-50%) translateY(-50%);
   transition: transform 0.1s;
   width: 50px;
@@ -429,7 +429,7 @@
   height: 60px;
   left: 4vw;
   position: absolute;
-  top: 34.5vw;
+  top: 523px;
   transform: translateX(-50%) translateY(-50%);
   transition: transform 0.1s;
   width: 50px;
