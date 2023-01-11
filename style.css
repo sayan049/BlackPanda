@@ -329,14 +329,14 @@
  }
 
  .most-updated-tshirt {
-   width: 100vw;
+   /* width: 100vw; */
    height: 10em;
    border: 1px solid;
  }
 
  .special-lunch {
 
-   width: 100vw;
+   /* width: 100vw; */
    height: 10em;
    border: 1px solid;
  }
