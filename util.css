@@ -22,3 +22,6 @@ a{text-decoration: none;}
 .vwlogo{
     width: 57vw;
 }
+.absolute{
+    position: absolute;
+}
