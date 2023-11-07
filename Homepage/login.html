@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="util.css">
+    <link rel="stylesheet" href="style2.css">
+    <link rel="stylesheet" href="log-in_page.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+
+<body>
+    <header class="main-header *">
+        <nav class="upper-nav ">
+            <ul class="left flex">
+                <li><a href="#"> Offer</a> </li>
+                <li><a href="#"> Download</a></li>
+                <li><a href="#">membership</a> </li>
+                <li><a href="#">Fanbook</a> </li>
+                <li><a href="#">Contact Us</a> </li>
+                <li><a href="#">Track Order</a> </li>
+            </ul>
+        </nav>
+        <nav class="main-nav">
+            <div class="panda1 " style="position: absolute; "><img class="panda11" src="gif/croppedpanda.gif" alt=""
+                    style="height: 55px;"></div>
+            <div class="panda2 " style="position: absolute;left: 97.5vw; "><img class="panda22"
+                    src="gif/flippedpandafinal.gif" alt="" style="height: 55px; "></div>
+
+            <ul class="main-ul flex vw">
+                <div class="logo-to-search flex vw vwlogin">
+                    <li class="logo">logo</li>
+                    <li class="search-engine">
+                        <form class="search-box">
+                            <input type="text" placeholder="Search by Product, Category or collection" />
+                            <button type="reset"></button>
+                        </form>
+                    </li>
+                </div>
+
+            </ul>
+        </nav>
+
+        <nav class="lowerNav z1">
+
+            <div class="lowerNavObjects">
+                <ul class="flex left marginLowerNav">
+                    <li class="cursurPointer">LIVE NOW!</li>
+                    <li class="man cursurPointer" style="height: 28px;"><a href="index.html">MAN</a>
+
+
+                    </li>
+                    <li class="woman cursurPointer" style="height: 28px;"><a href="index.html">WOMAN</a>
+
+                    </li>
+                    <li class="kid cursurPointer" style="height: 28px;"><a href="index.html">KIDS</a>
+
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <div class="main_log-in_body">
+            <div class="leftside">
+                <div class="logo-panda-login"><img src="img/loginPanda-leftside.jpg"
+                        alt=""></div>
+                <svg style="visibility: hidden; position: absolute;" width="0" height="0"
+                    xmlns="http://www.w3.org/2000/svg" version="1.1">
+                    <defs>
+                        <filter id="round">
+                            <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blur" />
+                            <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9"
+                                result="goo" />
+                            <feComposite in="SourceGraphic" in2="goo" operator="atop" />
+                        </filter>
+                    </defs>
+                </svg>
+
+
+            </div>
+            <div class="rightside">
+                <form action="">
+                <div class="login_box">
+                    <div style="height:calc((100vh - 114px) - 8em);
+                   width:20em">
+                        <div class="Login_title">
+                            <h4 class="a">Log in</h4>
+                        </div>
+                        <div class="upper_text">Login,email or phone number</div>
+                        <input type="text" name="name-email-phoneno" id="n-e-p">
+                        <div class="lower_text">Password</div>
+                        <input type="password" name="password" id="p" ">
+                        <button class=" btn-login-loginpage" type="submit">Log in</button>
+                        <hr class="space_left" data-content="or log in with">
+                        <div style="margin-left:81px;margin-top:10px;">
+                            <div class="g-f_icons">
+                                <div class="googlee"> <img src="img/google.png" alt=""
+                                        style="height: 30px"> </div>
+                                <div class="facebookk"> <img src="img/facebook.png" alt=""
+                                        style="height: 34px"></div>
+                            </div>
+                        </div>
+                        <div class="forgot-password_login">Forgot login or password ?</div>
+
+                    </div>
+
+                </div>
+            </form>
+
+            </div>
+        </div>
+
+
+
+
+
+
+
+    </main>
+    <script src="Homepage/script.js"></script>
+
+
+</body>
+
+
+</html>
