@@ -17,6 +17,7 @@ document.ontouchmove = e => handleMove(e.touches[0]);
   document.getElementById("content").scrollLeft+=300;
  }
 const leftSlide=document.getElementById("leftSlide");
+
 leftSlide.onclick=function(){
   document.getElementById("content").scrollLeft-=300;
 }

@@ -11,10 +11,11 @@
     <link rel="stylesheet" href="style2.css">
     <link rel="stylesheet" href="log-in_page.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
 
 </head>
 
-<body>
+<body id="containerr">
     <header class="main-header *">
         <nav class="upper-nav ">
             <ul class="left flex">
@@ -67,24 +68,37 @@
     </header>
     <main>
         <div class="main_log-in_body">
+
             <div class="leftside">
                 <div class="logo-panda-login"><img src="img/loginPanda-leftside.jpg"
-                        alt=""></div>
-                <svg style="visibility: hidden; position: absolute;" width="0" height="0"
-                    xmlns="http://www.w3.org/2000/svg" version="1.1">
-                    <defs>
-                        <filter id="round">
-                            <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blur" />
-                            <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9"
-                                result="goo" />
-                            <feComposite in="SourceGraphic" in2="goo" operator="atop" />
-                        </filter>
-                    </defs>
-                </svg>
+                        alt=""><div class="image-bubble">
+                        <div class="bubble-login">
+                            <p class="bubble thought">WELCOME !<br>PANDA IS HERE FOR YOU 🐼</p>
+                          </div>
+                        </div>
 
+
+                    
+                    </div>
+               
+                
+                
+                
+                <svg style="visibility: hidden; position: absolute;" width="0" height="0"
+                xmlns="http://www.w3.org/2000/svg" version="1.1">
+                <defs>
+                    <filter id="round">
+                        <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blur" />
+                        <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9"
+                            result="goo" />
+                        <feComposite in="SourceGraphic" in2="goo" operator="atop" />
+                    </filter>
+                </defs>
+            </svg>
 
             </div>
-            <div class="rightside">
+            <div class="rightside" >
+               
                 <form action="">
                 <div class="login_box">
                     <div style="height:calc((100vh - 114px) - 8em);
@@ -93,7 +107,7 @@
                             <h4 class="a">Log in</h4>
                         </div>
                         <div class="upper_text">Login,email or phone number</div>
-                        <input type="text" name="name-email-phoneno" id="n-e-p">
+                        <input type="text" name="name-email-phoneno" id="n-e-p" onclick="">
                         <div class="lower_text">Password</div>
                         <input type="password" name="password" id="p" ">
                         <button class=" btn-login-loginpage" type="submit">Log in</button>
@@ -109,6 +123,7 @@
                         <div class="forgot-password_login">Forgot login or password ?</div>
 
                     </div>
+                   
 
                 </div>
             </form>
@@ -123,7 +138,8 @@
 
 
     </main>
-    <script src="Homepage/script.js"></script>
+    <script src="script.js"></script>
+    <script src="login-page.js"></script>
 
 
 </body>

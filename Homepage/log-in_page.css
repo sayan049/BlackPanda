@@ -1,12 +1,9 @@
-/* div[class] {
-    filter:url(#round);
-} */
 
 .leftside{
     position: absolute;
     /* float: left; */
     max-height:calc(100vh - 114px);
-    width: 50vw;
+    width: auto;
     /* overflow: hidden;
      */
      filter:url(#round);
@@ -53,10 +50,17 @@
     height: 40px;
     width:20em;
     border-radius: 10px;
-   
-    border:1px solid rgb(42, 157, 143);;
+   outline: none;
+    border:2px solid rgb(172, 197, 194);
     
 }
+/* input {
+  visibility: hidden;
+} */
+#n-e-p:hover  {
+  border: 2px solid rgb(42, 157, 143);
+}
+
 .lower_text{
     margin-left: 25px;
     margin-top: 15px;
@@ -68,10 +72,14 @@
     height: 40px;
     width:20em;
     border-radius: 10px;
+    outline:none;
    
-    border:1px solid rgb(42, 157, 143);;
+    border:2px solid rgb(172, 197, 194);
     
 
+}
+#p:hover{
+  border: 2px solid rgb(42, 157, 143);
 }
 .btn-login-loginpage{
     height: 40px;
@@ -179,11 +187,109 @@
 .logo-panda-login img{
     object-fit: cover;
     height: 100%;
-    width: 100%;
+    width: 80%;
     clip-path: polygon(0% 0%,58% 0%, 66% 3%, 70% 5%, 76% 8%, 79% 12%, 82% 17%, 84% 23%, 83% 29%, 82% 35%, 81% 39%, 83% 45%, 85% 51%, 89% 58%, 90% 63%, 90% 68%, 89% 75%, 85% 81%, 82% 87%, 78% 91%, 75% 95%, 69% 99%, 0% 100%);
 
     
 
 }
+ p.bubble {
+	position: relative;
+	width: 300px;
+	text-align: center;
+	line-height: 1.4em;
+	margin: 40px auto;
+	background-color: #fff;
+	border: 8px solid #333;
+	border-radius: 30px;
+	font-family: sans-serif;
+	padding: 20px;
+	font-size:large;
+   
+}
+p.thought {
+	width: 200px;
+	border-radius: 200px;
+	padding: 15px;	
+    
+}
+p.bubble:before,
+p.bubble:after {
+	content: ' ';
+	position: absolute;
+	width: 0;
+	height: 0;
+    
+}
+p.thought:before,
+p.thought:after {
+	left: 10px;
+	bottom: -30px;
+	width: 40px;
+	height: 40px;
+	background-color: #fff;
+	border: 3px solid #333;
+	-webkit-border-radius: 28px;
+	-moz-border-radius: 28px;
+	border-radius: 28px;
+    
+}
+
+p.thought:after {
+	width: 20px;
+	height: 20px;
+	left: 5px;
+	bottom: -40px;
+	-webkit-border-radius: 18px;
+	-moz-border-radius: 18px;
+	border-radius: 18px;
+}
+
+.bubble-login{
+    position:relative;
+    width:6vw;
+    float:right; 
+    bottom: 4em;
+    left:9em;
+    visibility: hidden;    
+     /* z-index: 5;  */
+    
+     
+}
+
+.image-bubble{
+    position: relative;
+    /* background-color: #ff0000; */
+    height: 30em;
+    width: 12em;
+    left: 15em;
+    bottom: 35em;
+}
+.image-bubble:hover .bubble-login{
+    visibility: visible;
+    animation-name: sayan;
+    animation-duration: 4s;
+    animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+@keyframes sayan {
+    0%{
+      left: -1em;
+      opacity: 0;
+    }
+    100%{
+      left:9em;
+      opacity: 1;
+    }
+  } 
+
+  #containerr{
+    height: 100vh;
+    width: 100vw;
+  }
+
+ 
+  
+
+
 
 
