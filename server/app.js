@@ -7,8 +7,10 @@ const app=express();
 
 //path 
  const Homepagepath=path.join(__dirname,'../Homepage');
+ const productpagepath=path.join(__dirname,'../products');
 
  app.use(express.static(Homepagepath))
+ app.use(express.static(productpagepath))
 
  
 const port =5000;
@@ -24,6 +26,11 @@ app.get('/',(req,res)=>{
 
 app.get('/login' ,(req,res) =>{
     res.sendFile(path.join(Homepagepath,'/login.html'))
+    
+})
+
+app.get('/products' ,(req,res) =>{
+    res.sendFile(path.join(productpagepath,'/specProd.html'))
     
 })
 

@@ -1,0 +1,48 @@
+.flex {
+    display: flex;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.vw {
+    max-width: 70vw;
+    margin: auto;
+}
+
+.z1 {
+    z-index: 2;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+.vwlogin {
+    width: 70vw;
+}
+
+.vwlogo {
+    width: 57vw;
+}
+
+.absolute {
+    position: absolute;
+}
+
+.topmargin {
+    margin-top: 21px;
+}
+
+.leftmargin {
+    margin-left: 25px;
+}
+.spacebetween{
+    justify-content: space-between;
+}
