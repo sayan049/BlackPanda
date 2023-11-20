@@ -13,5 +13,41 @@ main{
   width: 100vw;
   height: 100%;
   position: absolute;
-  margin-top: 114px; 
+  top: 114px; 
+}
+.yellowline{
+  width: 265px;
+  height: 2px;
+  background-color: rgb(42, 157, 143);
+  display: block;
+  margin: 6px 0 0 2px;
+  position: absolute;
+  top: 50px;
+}
+.prod{
+  /* height: 359px; */
+  height: 473px;
+  width: 266px;
+  
+  margin-top: 21px;
+  margin-left: 25px;
+  display: inline-block;
+}
+.prodboxcontainer{
+  width: 1194px;
+  margin: auto;
+}
+.prodimg{
+  display: inline-block;
+  width: 266px;
+  height: 359px;
+  background: rgb(42, 157, 143);
+  border: 1px solid;
+}
+.proddetails{
+  display: inline-block;
+  width: 266px;
+  height: 114px;
+  background: rgb(38, 70, 83);
+  border: 1px solid;
 }
