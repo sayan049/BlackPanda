@@ -1,0 +1,34 @@
+.middle_text{
+    margin-top: 15px;
+    margin-left: 25px;
+    color:rgb(38, 70, 83);
+}
+#e{
+    margin-top: 5px;
+    margin-left: 25px;
+    height: 40px;
+    width:20em;
+    border-radius: 10px;
+   outline: none;
+    border:2px solid rgb(172, 197, 194);
+}
+.lower_middle_text{
+    margin-top: 15px;
+    margin-left: 25px;
+    color:rgb(38, 70, 83);
+}
+#ph-n{
+    margin-top: 5px;
+    margin-left: 25px;
+    height: 40px;
+    width:20em;
+    border-radius: 10px;
+   outline: none;
+    border:2px solid rgb(172, 197, 194);
+}
+#ph-n:hover  {
+    border: 2px solid rgb(42, 157, 143);
+  }
+  #e:hover  {
+    border: 2px solid rgb(42, 157, 143);
+  }
