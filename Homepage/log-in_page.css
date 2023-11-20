@@ -165,7 +165,7 @@
 
 }
 .forgot-password_login{
-    margin-left: 78px;
+    margin-left: 105px;
     color: rgb(42, 157, 143);
     cursor: pointer;
 }
@@ -286,6 +286,19 @@ p.thought:after {
     height: 100vh;
     width: 100vw;
   }
+
+.sign_up_for-create-account{
+    /* margin-top: 50px; */
+    margin-left: 35px;
+    font-size: 15px;
+    color: rgb(42, 157, 143);
+    /* cursor: pointer; */
+}
+.sign_up_for-create-account-right{
+    /* margin-top: 50px; */
+    margin-left: 5px;
+    
+}
 
  
   
