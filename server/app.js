@@ -1,6 +1,8 @@
 const { error } = require('console');
 const express=require('express')
 const path =require('path')
+const bcrypt=require('bcrypt')
+const emailValidator=require('email-validator')
 const loginCollection=require("./login-data")
 
 
@@ -16,7 +18,7 @@ const app=express();
  app.use(express.urlencoded({extended:false}))
 
  
-const port =8080;
+const port =3000;
 
 
 //for homepage
@@ -39,35 +41,77 @@ app.get('/signup' , (req,res) =>{
     res.render(path.join(Homepagepath,'/sign_up.html'))
     
 })
+//entering data in database
 
 app.post('/signup', async (req,res) =>{
     const data={
         name:req.body.name,
+        username:req.body.username,
         email:req.body.email,
-        number:req.body.number,
+       
         password:req.body.password
     }
 
-await loginCollection.insertMany([data])
+
+
+//check if the username exixts or not
+const validEmail= await loginCollection.findOne({email:data.email})
+const existUser=await loginCollection.findOne({username:data.username})
+
+if(existUser ){
+   res.send("Username already exists")
+    
+}else if(!emailValidator.validate(req.body.email)){
+    res.send("email is not valid")
+
+}else if(emailValidator.validate(req.body.email) && validEmail){
+   
+        res.send("email is already in use") 
+
+    
+
+}
+
+else{
+    
+    const saltRounds=10;
+    const hashedPassword=await bcrypt.hash(data.password, saltRounds);
+    
+    data.password=hashedPassword;//replacing password with hashed password
+
+    await loginCollection.insertMany([data])
+    console.log(data)
+
+}
+
+
 res.sendFile(path.join(Homepagepath,'/index.html'))
-console.log(data)
+
 
 })
 app.post('/login', async (req,res) =>{
    try{
     // console.log("hjasdbhskdgfkd")
-    const check= await loginCollection.findOne({name:req.body.name})
+    const check= await loginCollection.findOne({username:req.body.username});
+    if(!req.body.username){
+       return res.send("username can't empty")
 
-    if( check.password===req.body.password  ){
-        res.sendFile(path.join(Homepagepath,'/index.html'))
     }
+    else if(!check){
+       return res.send("username not found");
+    }
+
+    const isPasswordMatch = await bcrypt.compare(req.body.password , check.password);
+    if(isPasswordMatch){
+        res.sendFile(path.join(Homepagepath,'/index.html'));
+    }else{
+       return res.send("wrong password");
+    }
+
     
-    else{
-        res.send("wrong details")
-    }
 
    }catch{
-    res.send("wrong ")
+    res.send("wrong details")
     
    }
     
@@ -86,3 +130,6 @@ app.get('/products' ,(req,res) =>{
 app.listen(port,(req,res) =>{
     console.log(`server is running on ${port}`)
 })
+app.use(function(err, req, res, next) {
+    res.status(err.status || 500).json(response.error(err.status || 500));
+});
