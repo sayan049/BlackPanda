@@ -61,3 +61,11 @@ function displayImage(event) {
 container.onclick = function(event) {
   displayImage(event);
 };
+
+const popup=document.getElementById('popup')
+function forgotPassword(){
+  popup.style.cssText='visibility: visible;'
+}
+function crossicon(){
+  popup.style.cssText='visibility: hidden;'
+}

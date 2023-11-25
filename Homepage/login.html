@@ -15,7 +15,7 @@
 
 </head>
 
-<body id="containerr">
+<body id="containerr" style="font-family: montserrat,sans-serif;">
     <header class="main-header *">
         <nav class="upper-nav ">
             <ul class="left flex">
@@ -68,6 +68,22 @@
     </header>
     <main>
         <div class="main_log-in_body">
+            <div class="popup_backdrop" id="popup">
+            <div class="popup" >
+                <div>
+                    <div class="heading" style="display: flex;justify-content: center;margin: 15px;font-size: 23px;"><p style="margin: 0px;">Forgot password</p></div>
+                    <div class="bodypopup">
+                        <div class="popuptxt">Please enter your Email Id to receive a reset password link</div>
+                        <form action="" name="Forgotform">
+                            <input type="email" name="email" id="web_forgot_password_email" value="">
+                            <button id="web_forgot_password_submit" type="submit" class="forgotSubmit">Submit</button>
+                        </form>
+                    </div>
+                </div>
+                <p class="crossicon" onclick="crossicon()">╳</p>
+            </div>
+            
+        </div>
 
             <div class="leftside">
                 <div class="logo-panda-login"><img src="img/loginPanda-leftside.jpg"
@@ -120,8 +136,7 @@
                                         style="height: 34px"></div>
                             </div>
                         </div>
-
-                        <div class="forgot-password_login">Forgot password ?</div>
+                        <div class="forgot-password_login" onclick="forgotPassword()">Forgot password ?</div>
                         <hr class="space_left" data-content="or ">
                         <div style="display: flex;"><div  class="sign_up_for-create-account"> Don't have a BlackPanda account ? </div>
                         <div  class="sign_up_for-create-account-right"> <a href="sign_up.html" style=" color:red;">Sign up</a> </div></div>
