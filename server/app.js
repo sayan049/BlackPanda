@@ -2,6 +2,7 @@ const { error } = require('console');
 const express=require('express')
 const path =require('path')
 const bcrypt=require('bcrypt')
+const nodemailer=require('nodemailer')
 const emailValidator=require('email-validator')
 const loginCollection=require("./login-data")
 
@@ -18,7 +19,53 @@ const app=express();
  app.use(express.urlencoded({extended:false}))
 
  
-const port =3000;
+const port =3080;
+
+//for send mail
+const sendVerifyMail = async(name,email,user_id)=>{
+    try {
+        const transporter = nodemailer.createTransport({
+            service:'Gmail',
+            // secure:false,
+            // requireTLS:true,
+            auth:{
+                user:'sayanpatra017@gmail.com',
+                pass:'yuma nokm eakz qhhm'
+            }
+
+        });
+        const mailOptions = {
+            from:'sayanpatra017@gmail.com',
+            to:email,
+            subject:'For verification mail',
+            html:'<p>Hii '+name+', please click here to <a href="http://127.0.0.1:3080/mailVerify.html?id='+user_id+'"> Verify </a> your mail. </p> '
+        }
+        transporter.sendMail(mailOptions,function(error,info){
+            if(error){
+                console.log(error.message);
+            }else{
+                console.log("email has been sent:- ",info.response);
+            }
+        })
+        
+    } catch (error) {
+        console.log(error.message);
+        
+    }
+
+}
+const verifyMail = async(req,res)=>{
+    try {
+       const updateInfo= await loginCollection.updateOne({_id:req.query.id},{ $set:{ is_verified:1 }});
+       console.log(updateInfo);
+       res.send("mail verified");
+
+        
+    } catch (error) {
+        console.log(error.message);
+        
+    }
+}
 
 
 //for homepage
@@ -48,15 +95,23 @@ app.post('/signup', async (req,res) =>{
         name:req.body.name,
         username:req.body.username,
         email:req.body.email,
+        is_admin:0,
        
         password:req.body.password
     }
+    //replacing password with hashed password
+    const saltRounds=10;
+    const hashedPassword=await bcrypt.hash(data.password, saltRounds);
+    
+    data.password=hashedPassword;
 
 
 
 //check if the username exixts or not
 const validEmail= await loginCollection.findOne({email:data.email})
 const existUser=await loginCollection.findOne({username:data.username})
+const id=await loginCollection.findOne({id:data._id})
+console.log(id)
 
 if(existUser ){
    res.send("Username already exists")
@@ -73,11 +128,13 @@ if(existUser ){
 }
 
 else{
+  
+
+    sendVerifyMail(req.body.name,req.body.email,id);
     
-    const saltRounds=10;
-    const hashedPassword=await bcrypt.hash(data.password, saltRounds);
+
     
-    data.password=hashedPassword;//replacing password with hashed password
+   
 
     await loginCollection.insertMany([data])
     console.log(data)
@@ -121,6 +178,9 @@ app.post('/login', async (req,res) =>{
 
 
 })
+app.get('/mailVerify',verifyMail);
+   
+
 
 app.get('/products' ,(req,res) =>{
     res.sendFile(path.join(productpagepath,'/specProd.html'))
