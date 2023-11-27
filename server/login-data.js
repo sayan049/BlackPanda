@@ -1,6 +1,6 @@
 const mongoose=require("mongoose")
 // const mongoUrl="mongodb+srv://sayan049:YBAnsRI4EcsOalps@cluster0.5ynm4va.mongodb.net/login-data?retryWrites=true&w=majority"
-const mongoUrl="mongodb://127.0.0.1:27017/login_data"
+const mongoUrl="mongodb+srv://sayan049:wiKENYaWR7tbM5YI@cluster0.5ynm4va.mongodb.net/login-data?retryWrites=true&w=majority"
 
 const connectionsParams={
     useNewUrlParser:true,
@@ -38,7 +38,7 @@ const loginSchema= new mongoose.Schema({
         type:String,
         required:true
     },
-    is_varified:{
+    is_verified:{
         type:String,
         default:0
     }

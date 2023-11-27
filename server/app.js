@@ -38,34 +38,32 @@ const sendVerifyMail = async(name,email,user_id)=>{
             from:'sayanpatra017@gmail.com',
             to:email,
             subject:'For verification mail',
-            html:'<p>Hii '+name+', please click here to <a href="http://127.0.0.1:3080/mailVerify.html?id='+user_id+'"> Verify </a> your mail. </p> '
+            html:'<p>Hii '+name+', please click here to <a href="http://127.0.0.1:3080/mailVerify?user='+user_id+'"> Verify </a> your mail. </p> '
         }
-        transporter.sendMail(mailOptions,function(error,info){
-            if(error){
-                console.log(error.message);
-            }else{
-                console.log("email has been sent:- ",info.response);
-            }
-        })
+      const info = await transporter.sendMail(mailOptions);
+      console.log('Email sent:', info.response);
+      return true;   
+        
         
     } catch (error) {
-        console.log(error.message);
+        console.error('Failed to send verification email:', error.message);
+        return false; 
         
     }
 
 }
-const verifyMail = async(req,res)=>{
-    try {
-       const updateInfo= await loginCollection.updateOne({_id:req.query.id},{ $set:{ is_verified:1 }});
-       console.log(updateInfo);
-       res.send("mail verified");
+// const verifyMail = async(req,res)=>{
+//     try {
+//        const updateInfo= await loginCollection.updateOne({_id:req.query.id},{ $set:{ is_verified:1 }});
+//        console.log(updateInfo);
+//        res.send("mail verified");
 
         
-    } catch (error) {
-        console.log(error.message);
+//     } catch (error) {
+//         console.log(error.message);
         
-    }
-}
+//     }
+// }
 
 
 //for homepage
@@ -110,8 +108,8 @@ app.post('/signup', async (req,res) =>{
 //check if the username exixts or not
 const validEmail= await loginCollection.findOne({email:data.email})
 const existUser=await loginCollection.findOne({username:data.username})
-const id=await loginCollection.findOne({id:data._id})
-console.log(id)
+// const id=await loginCollection.findOne({id:data._id})
+// console.log(id)
 
 if(existUser ){
    res.send("Username already exists")
@@ -128,15 +126,27 @@ if(existUser ){
 }
 
 else{
-  
+     await loginCollection.insertMany([data])
+  try {
+    
+    sendVerifyMail(req.body.name,req.body.email,req.body.username);
+    // const updateInfo= await loginCollection.updateOne({username:data.username},{ $set:{ is_verified:1 }});
+    // console.log(updateInfo);
+    
+    
+    
+  } catch (error) {
+    console.log(error.message)
+    
+  }
 
-    sendVerifyMail(req.body.name,req.body.email,id);
+    
     
 
     
    
 
-    await loginCollection.insertMany([data])
+    
     console.log(data)
 
 }
@@ -146,6 +156,37 @@ res.sendFile(path.join(Homepagepath,'/index.html'))
 
 
 })
+//endpoint
+app.get('/mailVerify', async (req, res) => {
+   
+    const username = req.query.user;
+    console.log(username)
+
+  
+    try {
+        res.sendFile(path.join(Homepagepath,'/mailverify.html'))
+      // Update user information in the database
+      const updateInfo = await loginCollection.updateOne(
+        { username },
+        { $set: { is_verified: 1 } }
+      );
+      console.log(updateInfo)
+  
+      if (updateInfo.modifiedCount > 0) {
+        console.log('User information updated:', updateInfo);
+      console.log('Mail verified');
+
+      } else {
+       return res.status(404).send('User not found or not updated');
+      }
+    } catch (error) {
+      console.error('Error during verification:', error.message);
+     return res.status(500).send('Verification failed');
+    }
+  });
+
+
+
 app.post('/login', async (req,res) =>{
    try{
     // console.log("hjasdbhskdgfkd")
@@ -178,7 +219,7 @@ app.post('/login', async (req,res) =>{
 
 
 })
-app.get('/mailVerify',verifyMail);
+// app.get('/mailVerify',verifyMail);
    
 
 
