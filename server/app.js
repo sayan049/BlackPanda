@@ -182,7 +182,7 @@ app.get('/mailVerify', async (req, res) => {
     } catch (error) {
       console.error('Error during verification:', error.message);
      return res.status(500).send('Verification failed');
-    }
+     }
   });
 
 
