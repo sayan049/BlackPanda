@@ -46,7 +46,30 @@ const loginSchema= new mongoose.Schema({
 
 })
 
+const productSchema=new mongoose.Schema({
+    id:{
+        type:Number
+    },
+    link:{
+        type:String
+
+        },
+        ImageLink:{
+            type:String
+        },
+        category:{
+            type:Array
+        },
+        price:{
+            type:String
+        }
+})
+
+
 
 const loginCollection= new mongoose.model("loginCollection",loginSchema)
 
 module.exports=loginCollection
+
+const dataname=new mongoose.model('productdCollection',productSchema);
+module.exports=dataname;

@@ -5,9 +5,12 @@ const bcrypt=require('bcrypt')
 const nodemailer=require('nodemailer')
 const emailValidator=require('email-validator')
 const loginCollection=require("./login-data")
+const dataname=require("./login-data")
 
 
 const app=express();
+app.set("view engine","ejs");
+app.set('views',path.join(__dirname,'../views'))
 
 //path 
  const Homepagepath=path.join(__dirname,'../Homepage');
@@ -19,7 +22,7 @@ const app=express();
  app.use(express.urlencoded({extended:false}))
 
  
-const port =3080;
+const port =5000;
 
 //for send mail
 const sendVerifyMail = async(name,email,user_id)=>{
@@ -67,10 +70,19 @@ const sendVerifyMail = async(name,email,user_id)=>{
 
 
 //for homepage
+const productdetails = dataname.find({});
+app.get('/', async (req, res) => {
+  try {
+      const data = await productdetails.exec();
+      console.log(data); // Check the console for the retrieved data
+      res.render("index", { datanames: data });
+  } catch (error) {
+      console.error(error.message);
+      res.status(500).send("Internal Server Error");
+  }
+});
 
-app.get('/',(req,res)=>{
-    res.sendFile(path.join(Homepagepath,'/index.html'))
-})
+
 
 //for log-in page
 
@@ -231,6 +243,6 @@ app.get('/products' ,(req,res) =>{
 app.listen(port,(req,res) =>{
     console.log(`server is running on ${port}`)
 })
-app.use(function(err, req, res, next) {
-    res.status(err.status || 500).json(response.error(err.status || 500));
-});
+// app.use(function(err, req, res, next) {
+//     res.status(err.status || 500).json(res.error(err.status || 500));
+// });
