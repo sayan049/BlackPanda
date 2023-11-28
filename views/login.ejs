@@ -68,22 +68,24 @@
     </header>
     <main>
         <div class="main_log-in_body">
+            <form action="/forgotPassword" method="post">
             <div class="popup_backdrop" id="popup">
             <div class="popup" >
                 <div>
                     <div class="heading" style="display: flex;justify-content: center;margin: 15px;font-size: 23px;"><p style="margin: 0px;">Forgot password</p></div>
                     <div class="bodypopup">
                         <div class="popuptxt">Please enter your Email Id to receive a reset password link</div>
-                        <form action="" name="Forgotform">
-                            <input type="email" name="email" id="web_forgot_password_email" value="">
+                        
+                            <input type="text" name="email" id="web_forgot_password_email" >
                             <button id="web_forgot_password_submit" type="submit" class="forgotSubmit">Submit</button>
-                        </form>
+                        
                     </div>
                 </div>
                 <p class="crossicon" onclick="crossicon()">╳</p>
             </div>
             
         </div>
+    </form>
 
             <div class="leftside">
                 <div class="logo-panda-login"><img src="img/loginPanda-leftside.jpg"
@@ -149,6 +151,7 @@
 
             </div>
         </div>
+    </div>
 
 
 
