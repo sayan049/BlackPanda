@@ -4,13 +4,14 @@ const path =require('path')
 const bcrypt=require('bcrypt')
 const nodemailer=require('nodemailer')
 const emailValidator=require('email-validator')
-const loginCollection=require("./login-data")
-const dataname=require("./login-data")
+const { loginCollection, dataname } = require('./login-data');
+
 
 
 const app=express();
 app.set("view engine","ejs");
 app.set('views',path.join(__dirname,'../views'))
+const ejsEnginePath=path.join(__dirname,'../views');
 
 //path 
  const Homepagepath=path.join(__dirname,'../Homepage');
@@ -22,7 +23,7 @@ app.set('views',path.join(__dirname,'../views'))
  app.use(express.urlencoded({extended:false}))
 
  
-const port =5000;
+const port =3080;
 
 //for send mail
 const sendVerifyMail = async(name,email,user_id)=>{
@@ -70,24 +71,38 @@ const sendVerifyMail = async(name,email,user_id)=>{
 
 
 //for homepage
-const productdetails = dataname.find({});
-app.get('/', async (req, res) => {
-  try {
-      const data = await productdetails.exec();
-      console.log(data); // Check the console for the retrieved data
-      res.render("index", { datanames: data });
-  } catch (error) {
+
+const fetchDataMiddleware = async (req, res, next) => {
+    try {
+      const datas = await dataname.find({}).exec();
+      req.datas = datas;
+      next();
+    } catch (error) {
       console.error(error.message);
       res.status(500).send("Internal Server Error");
-  }
-});
+    }
+  };
+
+  app.use(fetchDataMiddleware);
+
+// const productdetails = dataname.find({});
+app.get('/', async (req, res) => {
+    try {
+        // let datas = await productdetails.exec();
+        // console.log(datas); // Check the console for the retrieved data
+        res.render("index", { datanames: req.datas });
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).send("Internal Server Error");
+    }
+  });
 
 
 
 //for log-in page
 
 app.get('/login' ,(req,res) =>{
-    res.render(path.join(Homepagepath,'/login.html'))
+    res.render('login')
     
 })
 app.get('/signup' , (req,res) =>{
@@ -95,7 +110,7 @@ app.get('/signup' , (req,res) =>{
 
 
 
-    res.render(path.join(Homepagepath,'/sign_up.html'))
+    res.render('sign_up')
     
 })
 //entering data in database
@@ -138,12 +153,16 @@ if(existUser ){
 }
 
 else{
-     await loginCollection.insertMany([data])
+     
   try {
+    await loginCollection.insertMany([data]);
+    console.log(data)
     
     sendVerifyMail(req.body.name,req.body.email,req.body.username);
     // const updateInfo= await loginCollection.updateOne({username:data.username},{ $set:{ is_verified:1 }});
     // console.log(updateInfo);
+    // let datas = await productdetails.exec();
+    res.render("index", { datanames: req.datas });
     
     
     
@@ -159,30 +178,32 @@ else{
    
 
     
-    console.log(data)
+    
 
 }
 
 
-res.sendFile(path.join(Homepagepath,'/index.html'))
+ //datas = await productdetails.exec();
+// console.log(data); // Check the console for the retrieved data
+// res.render("index", { datanames: datas });
 
 
 })
 //endpoint
 app.get('/mailVerify', async (req, res) => {
-   
+    res.render('mailVerify')
     const username = req.query.user;
     console.log(username)
 
   
     try {
-        res.sendFile(path.join(Homepagepath,'/mailverify.html'))
+        
       // Update user information in the database
       const updateInfo = await loginCollection.updateOne(
         { username },
         { $set: { is_verified: 1 } }
       );
-      console.log(updateInfo)
+      
   
       if (updateInfo.modifiedCount > 0) {
         console.log('User information updated:', updateInfo);
@@ -213,7 +234,7 @@ app.post('/login', async (req,res) =>{
 
     const isPasswordMatch = await bcrypt.compare(req.body.password , check.password);
     if(isPasswordMatch){
-        res.sendFile(path.join(Homepagepath,'/index.html'));
+        res.render('index',{datanames:req.datas})
     }else{
        return res.send("wrong password");
     }
@@ -236,7 +257,7 @@ app.post('/login', async (req,res) =>{
 
 
 app.get('/products' ,(req,res) =>{
-    res.sendFile(path.join(productpagepath,'/specProd.html'))
+    res.render('specProd')
     
 })
 

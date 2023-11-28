@@ -51,7 +51,7 @@
                                             WELCOME TO
                                         </li>
                                         <li>To access account and manage orders</li>
-                                        <li><a href="login.html" > <button class="btn-login"  type="submit"
+                                        <li><a href="/login" > <button class="btn-login"  type="submit"
                                                     style="size: 2em; color: red;">LOG IN/SIGN UP </button></a>
                                         </li>
                                     </div>
@@ -256,17 +256,17 @@
             style="max-width: 83vw;  overflow: hidden; white-space: nowrap;margin-left: 10vw;">
             
             <!-- <a href="" target="_blank">
-                <img class="tshirt" border="0" src= "" > <%= datanames.ImageLink %> </a>
-            <div class="tshirt"><%= datanames.ImageLink %></div>
+                <img class="tshirt" border="0" src= "" >  </a>
+            <div class="tshirt"></div>
             <div class="tshirt"></div>
             <div class="tshirt"></div>
             <div class="tshirt"></div> -->
 
-            <% if (datanames.length > 0) { %>
+            <%  if (datanames.length > 0) { %>
                 <% datanames.forEach(function(element) { %>
                     <img src= <%= element.ImageLink %> alt="" class="tshirt">
                 <% }); %>
-            <% } %>
+            <% }  %>
             
  
  

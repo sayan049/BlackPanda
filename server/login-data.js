@@ -45,6 +45,9 @@ const loginSchema= new mongoose.Schema({
    
 
 })
+const loginCollection= new mongoose.model("loginCollection",loginSchema)
+
+// module.exports=loginCollection
 
 const productSchema=new mongoose.Schema({
     id:{
@@ -67,9 +70,11 @@ const productSchema=new mongoose.Schema({
 
 
 
-const loginCollection= new mongoose.model("loginCollection",loginSchema)
 
-module.exports=loginCollection
 
 const dataname=new mongoose.model('productdCollection',productSchema);
-module.exports=dataname;
+ //module.exports=dataname;
+ module.exports={
+    loginCollection: loginCollection,
+    dataname: dataname
+ };
