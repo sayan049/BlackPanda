@@ -1,6 +1,6 @@
 const mongoose=require("mongoose")
 // const mongoUrl="mongodb+srv://sayan049:YBAnsRI4EcsOalps@cluster0.5ynm4va.mongodb.net/login-data?retryWrites=true&w=majority"
-const mongoUrl="mongodb+srv://sayan049:wiKENYaWR7tbM5YI@cluster0.5ynm4va.mongodb.net/login-data?retryWrites=true&w=majority"
+const mongoUrl="mongodb+srv://BlackPanda:4D5w06JRL9FjIgOE@blacpandacluster.oodizbz.mongodb.net/BlackPanda?retryWrites=true&w=majority"
 
 const connectionsParams={
     useNewUrlParser:true,
@@ -72,7 +72,7 @@ const productSchema=new mongoose.Schema({
 
 
 
-const dataname=new mongoose.model('productdCollection',productSchema);
+const dataname=new mongoose.model('productCollection',productSchema);
  //module.exports=dataname;
  module.exports={
     loginCollection: loginCollection,

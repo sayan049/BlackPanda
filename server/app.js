@@ -94,7 +94,7 @@ app.get('/', async (req, res) => {
 });
 
 //reseting password variable
-let userforResetPassword ;
+// let userforResetPassword ;
 
 //for log-in page
 
@@ -111,9 +111,10 @@ app.get('/products', (req, res) => {
 })
 app.get('/resetPassword', async(req, res)=>{
   res.render('resetPassword')
-   userforResetPassword=req.query.user;
-  // console.log(userforResetPassword);
+    userforResetPassword=req.query.user;
+  
 })
+
 
 
 
@@ -121,59 +122,83 @@ app.get('/resetPassword', async(req, res)=>{
 
 //entering data in database
 
+// entering data in the database
 app.post('/signup', async (req, res) => {
-  const data = {
-    name: req.body.name,
-    username: req.body.username,
-    email: req.body.email,
-    is_admin: 0,
+  try {
+    const data = {
+      name: req.body.name,
+      username: req.body.username,
+      email: req.body.email,
+      is_admin: 0,
+      password: req.body.password
+    };
 
-    password: req.body.password
-  }
-  //replacing password with hashed password
-  const saltRounds = 10;
-  const hashedPassword = await bcrypt.hash(data.password, saltRounds);
+    // Replace password with hashed password
+    const saltRounds = 10;
+    const hashedPassword = await bcrypt.hash(data.password, saltRounds);
+    data.password = hashedPassword;
 
-  data.password = hashedPassword;
+    // Check if the username exists or not
+    const validEmail = await loginCollection.findOne({ email: data.email });
+    const existUser = await loginCollection.findOne({ username: data.username });
 
-
-
-  //check if the username exixts or not
-  const validEmail = await loginCollection.findOne({ email: data.email })
-  const existUser = await loginCollection.findOne({ username: data.username })
-  // const id=await loginCollection.findOne({id:data._id})
-  // console.log(id)
-
-  if (existUser) {
-    res.send("Username already exists")
-
-  } else if (!emailValidator.validate(req.body.email)) {
-    res.send("email is not valid")
-
-  } else if (emailValidator.validate(req.body.email) && validEmail) {
-
-    res.send("email is already in use")
-  }
-  else {
-    try {
+    if (!data.name || !data.username || !data.email || !data.password) {
+      return res.send("Fill all the fields to sign up");
+    } else if (existUser) {
+      return res.send("Username already exists");
+    } else if (!emailValidator.validate(req.body.email)) {
+      return res.send("Email is not valid");
+    } else if (emailValidator.validate(req.body.email) && !validEmail) {
+      // Insert data into the database
       await loginCollection.insertMany([data]);
-      console.log(data)
+      console.log(data);
+
+      // Send verification email
       sendVerifyMail(req.body.name, req.body.email, req.body.username);
-      // const updateInfo= await loginCollection.updateOne({username:data.username},{ $set:{ is_verified:1 }});
-      // console.log(updateInfo);
-      // let datas = await productdetails.exec();
+
+      // Render the index page
       res.render("index", { datanames: req.datas });
-    } catch (error) {
-      console.log(error.message)
+    } else if (emailValidator.validate(req.body.email) && validEmail) {
+      // Use cursor to iterate over documents asynchronously
+      let bool = true;
+      const cursor = await loginCollection.find({ email: data.email }).cursor();
 
+      for await (const doc of cursor) {
+        if (doc.is_verified == 1) {
+          bool = false;
+        }
+        // console.log(bool);
+      }
+
+      // console.log(bool);
+
+      if (bool == false) {
+        return res.send("There is a BlackPanda account with this email: ");
+      } else {
+        // Insert data into the database
+        await loginCollection.insertMany([data]);
+        console.log(data);
+
+        // Send verification email
+        sendVerifyMail(req.body.name, req.body.email, req.body.username);
+
+        // Render the index page
+        res.render("index", { datanames: req.datas });
+      }
+    } else {
+      return res.status(500).send("Internal server error");
     }
+  } catch (error) {
+    console.log(error.message);
+    return res.status(500).send("Internal server error");
   }
-})
+});
 
 
 
 
-//endpoint
+//endpoint in mailverify
+
 app.get('/mailVerify', async (req, res) => {
   res.render('mailVerify')
   const username = req.query.user;
@@ -206,20 +231,26 @@ app.post('/login', async (req, res) => {
   try {
     // console.log("hjasdbhskdgfkd")
     const check = await loginCollection.findOne({ username: req.body.username });
+    
     if (!req.body.username) {
       return res.send("username can't empty")
 
     }
     else if (!check) {
       return res.send("username not found");
+    }else if(check && check.is_verified == 1){
+      const isPasswordMatch = await bcrypt.compare(req.body.password, check.password);
+      if (isPasswordMatch) {
+        res.render('index', { datanames: req.datas })
+      } else {
+        return res.send("wrong password");
+      }
+
+    }else{
+      return res.send("Your email is not verified, please verify your email ");
     }
 
-    const isPasswordMatch = await bcrypt.compare(req.body.password, check.password);
-    if (isPasswordMatch) {
-      res.render('index', { datanames: req.datas })
-    } else {
-      return res.send("wrong password");
-    }
+   
   } catch {
     res.send("wrong details")
 
@@ -234,10 +265,10 @@ app.post('/forgotPassword', async (req,res) => {
     const mail=req.body.email;
   const findEmail=await loginCollection.findOne({email:mail});
   // const verifiedEmail=await loginCollection.findOne({email:findEmail.is_verified : 1})
-  console.log(findEmail.is_verified);
+  // console.log(findEmail.is_verified);
 
   if(!mail){
-   return res.json("mail not valid");
+   return res.json("mail can't be empty");
   }else if(emailValidator.validate(mail) && !findEmail){
     return res.send("email not found");
   }else if(emailValidator.validate(mail) && findEmail && findEmail.is_verified == 1){
@@ -264,22 +295,26 @@ app.post('/resetPassword', async (req,res)=>{
   try {
     const newPassword=req.body.newPassword;
     const confirmPassword=req.body.confirmPassword;
-    const resetemailpassword=await loginCollection.findOne({username:userforResetPassword});
+    let x=userforResetPassword;
+    // const resetemailpassword=await loginCollection.findOne({username:x});
     if(!newPassword || !confirmPassword){
       return res.send("new password can't be empty");
     }else if(newPassword===confirmPassword){
       let finalpass=newPassword;
+      console.log(finalpass);
+      // 
       // console.log(finalpass)
       // console.log(userforResetPassword);
       const saltRounds = 10;
       const hashedPasswordReset = await bcrypt.hash(finalpass, saltRounds);
     
       finalpass = hashedPasswordReset;
-      const updateInformation= await loginCollection.updateOne({resetemailpassword}, { $set:{password:finalpass}});
-      console.log(updateInformation);
+      const updateInformation= await loginCollection.updateOne({username:x}, { $set:{password:finalpass}});
+      // console.log(updateInformation);
       if (updateInformation.modifiedCount > 0) {
         console.log('User information updated:', updateInformation);
         console.log('password changed');
+        return res.send("password changed succesfully");
   
       } else {
         return res.status(404).send('User not found or not updated');
