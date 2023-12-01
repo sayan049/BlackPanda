@@ -32,8 +32,10 @@
 .Login_title{
     /* display: inline-block; */
     font-size: 2em;
-    margin-left:111px;
-    color:rgb(38, 70, 83);
+    /* margin-left: 19px; */
+    color: rgb(38, 70, 83);
+    display: flex;
+    justify-content: center;
     
 
 
@@ -48,10 +50,11 @@
     margin-top: 5px;
     margin-left: 25px;
     height: 40px;
-    width:20em;
+    width:245px;
     border-radius: 10px;
    outline: none;
     border:2px solid rgb(172, 197, 194);
+    padding-left: 20px;
     
 }
 /* input {
@@ -70,11 +73,12 @@
     margin-top: 5px;
     margin-left: 25px;
     height: 40px;
-    width:20em;
+    width:245px;
     border-radius: 10px;
     outline:none;
    
     border:2px solid rgb(172, 197, 194);
+    padding-left: 20px;
     
 
 }
@@ -83,7 +87,7 @@
 }
 .btn-login-loginpage{
     height: 40px;
-    width: 20em;
+    width: 269px;
     margin-top: 20px;
     margin-left: 25px;
     border-radius: 10px;
@@ -165,7 +169,7 @@
 
 }
 .forgot-password_login{
-    margin-left: 105px;
+    margin-left: 89px;
     color: rgb(42, 157, 143);
     cursor: pointer;
 }
@@ -290,8 +294,8 @@ p.thought:after {
 .sign_up_for-create-account{
     /* margin-top: 50px; */
     margin-left: 28px;
-    margin-top: 2px;
-    font-size: 15px;
+    margin-top: 3px;
+    font-size: 11px;
     color: rgb(42, 157, 143);
     /* cursor: pointer; */
 }
@@ -327,7 +331,7 @@ padding: 19px;}
     color: #fff;
     text-transform: uppercase;}
 .bodypopup input{
-    width: 98%;
+    width: 94%;
     letter-spacing: .5px;
     font-size: 16px;
     margin-top: 10px;
@@ -335,6 +339,7 @@ padding: 19px;}
     height: 40px;
   /* width: 20em; */
   border-radius: 10px;
+  padding-left: 20px;
   outline: none;
   border: 2px solid rgb(172, 197, 194);
 }

@@ -2,6 +2,8 @@
 // document.body.addEventListener('click', function(event) {
 //     var x = event.clientX;
 //     var y = event.clientY;
+
+
   
 //     var displayedImage = document.getElementById('displayedImage');
 //     displayedImage.style.left = x + 'px';
@@ -63,9 +65,13 @@ container.onclick = function(event) {
 };
 
 const popup=document.getElementById('popup')
-function forgotPassword(){
+function forgotpassword(){
   popup.style.cssText='visibility: visible;'
 }
-function crossicon(){
+function crossicon(){ 
   popup.style.cssText='visibility: hidden;'
 }
+
+
+
+

@@ -11,6 +11,7 @@ const { loginCollection, dataname } = require('./login-data');
 
 
 
+
 //path 
 const Homepagepath = path.join(__dirname, '../Homepage');
 const productpagepath = path.join(__dirname, '../products');
@@ -38,13 +39,13 @@ const sendVerifyMail = async (name, email, user_id) => {
     const transporter = nodemailer.createTransport({
       service: 'Gmail',
       auth: {
-        user: 'sayanpatra017@gmail.com',
-        pass: 'yuma nokm eakz qhhm'
+        user: 'blaackpaandaaa@gmail.com',
+        pass: 'zihz jnyp aqjh spmz'
       }
 
     });
     const mailOptions = {
-      from: 'sayanpatra017@gmail.com',
+      from: 'blaackpaandaaa@gmail.com',
       to: email,
       subject: 'For verification mail',
       html: '<p>Hii ' + name + ', please click here to <a href="http://127.0.0.1:3080/mailVerify?user=' + user_id + '"> Verify </a> your mail. </p> '
@@ -120,7 +121,9 @@ app.get('/resetPassword', async(req, res)=>{
 
 
 
-//entering data in database
+//for pop up handeling
+
+
 
 // entering data in the database
 app.post('/signup', async (req, res) => {
@@ -139,11 +142,12 @@ app.post('/signup', async (req, res) => {
     data.password = hashedPassword;
 
     // Check if the username exists or not
-    const validEmail = await loginCollection.findOne({ email: data.email });
+    const validEmail = await loginCollection.findOne({ email: req.body.email });
     const existUser = await loginCollection.findOne({ username: data.username });
 
     if (!data.name || !data.username || !data.email || !data.password) {
-      return res.send("Fill all the fields to sign up");
+       return res.send("Fill all the fields to sign up");
+    
     } else if (existUser) {
       return res.send("Username already exists");
     } else if (!emailValidator.validate(req.body.email)) {
@@ -161,7 +165,7 @@ app.post('/signup', async (req, res) => {
     } else if (emailValidator.validate(req.body.email) && validEmail) {
       // Use cursor to iterate over documents asynchronously
       let bool = true;
-      const cursor = await loginCollection.find({ email: data.email }).cursor();
+      const cursor = await loginCollection.find({ email: req.body.email }).cursor();
 
       for await (const doc of cursor) {
         if (doc.is_verified == 1) {
@@ -261,8 +265,25 @@ app.post('/login', async (req, res) => {
 //forgot password post method
 
 app.post('/forgotPassword', async (req,res) => {
+  let boolean = true;
+  let nameForreset="";
+  let usernameForreset="";
+  const mail=req.body.email;
+  const cursor = await loginCollection.find({ email: mail }).cursor();
+
+  for await (const doc of cursor) {
+    if (doc.is_verified == 1) {
+      boolean = false;
+      nameForreset=doc.name;
+      usernameForreset=doc.username;
+    }
+    // console.log(bool);
+  }
+
+
   try {
-    const mail=req.body.email;
+   
+    
   const findEmail=await loginCollection.findOne({email:mail});
   // const verifiedEmail=await loginCollection.findOne({email:findEmail.is_verified : 1})
   // console.log(findEmail.is_verified);
@@ -271,8 +292,8 @@ app.post('/forgotPassword', async (req,res) => {
    return res.json("mail can't be empty");
   }else if(emailValidator.validate(mail) && !findEmail){
     return res.send("email not found");
-  }else if(emailValidator.validate(mail) && findEmail && findEmail.is_verified == 1){
-    sendResetPasswordLink(findEmail.name,findEmail.username,mail);
+  }else if(emailValidator.validate(mail) && findEmail && boolean == false){
+    sendResetPasswordLink(nameForreset,usernameForreset,mail);
     res.send("email sent")
 
   }else{

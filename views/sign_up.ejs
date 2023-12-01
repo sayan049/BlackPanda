@@ -69,6 +69,8 @@
     </header>
     <main>
         <div class="main_log-in_body">
+            <div style="width: 100%;display: flex;justify-content: center;height: 30px;position: absolute;z-index: 1;">
+            <div class="pop" style="margin-top: 4px;" id="pop"></div></div>
 
             <div class="leftside">
                 <div class="logo-panda-login"><img src="img/loginPanda-leftside.jpg"
@@ -105,16 +107,16 @@
                     <div style="height:calc((100vh - 114px) - 8em);
                    width:20em">
                         <div class="Login_title">
-                            <h4 class="a" style="margin-top: -1em;">Sign Up</h4>
+                            <h4 class="a" style="margin-top: -2px; font-size: 30px">Sign Up</h4>
                         </div>
                         <div class="upper_text" style="margin-top: 20px;"> Name</div>
-                        <input type="text" name="name"  id="n-e-p" onclick="">
+                        <input type="text" name="name" class="sign" id="n-e-p" onclick="" placeholder="Enter your name">
                         <div class="middle_text">Username</div>
-                        <input type="text" name="username" id="e">
+                        <input type="text" name="username"  class="sign" id="e" placeholder="Enter your username">
                         <div class="lower_middle_text">Email</div>
-                        <input type="text" name="email" id="ph-n" >
+                        <input type="text" name="email"  class="sign" id="ph-n" placeholder="Enter your email">
                         <div class="lower_text">Password</div>
-                        <input type="password" name="password" id="p" ">
+                        <input type="password" name="password"  class="sign" id="p" placeholder="Enter your password">
                         <button class=" btn-login-loginpage" type="submit">Sign up</button>
                         <hr class="space_left" data-content="or sign in with">
                         <div style="margin-left:81px;margin-top:10px;">
@@ -145,6 +147,7 @@
     </main>
     <script src="script.js"></script>
     <script src="login-page.js"></script>
+    
 
 
 </body>

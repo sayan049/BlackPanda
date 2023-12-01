@@ -10,13 +10,13 @@ const sendResetPasswordLink = async (name,  username,email) => {
       const transporter = nodemailer.createTransport({
         service: 'Gmail',
         auth: {
-          user: 'sayanpatra017@gmail.com',
-          pass: 'yuma nokm eakz qhhm'
+          user: 'blaackpaandaaa@gmail.com',
+          pass: 'zihz jnyp aqjh spmz'
         }
   
       });
       const mailOptions = {
-        from: 'sayanpatra017@gmail.com',
+        from: 'blaackpaandaaa@gmail.com',
         to: email,
         subject: 'For reseting password',
         html: '<p>Hii ' + name + ', please click here to <a href="http://127.0.0.1:3080/resetPassword?user=' + username + '"> reset </a> your password. </p> '
