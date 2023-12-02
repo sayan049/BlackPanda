@@ -4,6 +4,8 @@ const path = require('path')
 const bcrypt = require('bcrypt')
 const nodemailer = require('nodemailer')
 const emailValidator = require('email-validator')
+var flush=require('connect-flash')
+var session=require('express-session')
 const sendResetPasswordLink=require('./forgot-resetPassword');
 const { loginCollection, dataname } = require('./login-data');
 
@@ -27,7 +29,14 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.set("view engine", "ejs");
 app.set('views', path.join(__dirname, '../views'))
+app.use(session({
+  secret:'secret',
+  cookie:{maxAge: 60000},
+  resave:false,
+  saveUninitialized:false
 
+}));
+app.use(flush());
 
 
 //port
@@ -104,8 +113,14 @@ app.get('/login', (req, res) => {
 
 })
 app.get('/signup', (req, res) => {
-  res.render('sign_up')
-})
+  // Ensure that 'message' and 'message1' are always defined
+  const message = req.flash('message') || '';
+  const message1 = req.flash('message1') || '';
+  const message2 = req.flash('message2') || '';
+  const message3 = req.flash('message3') || '';
+
+  res.render('sign_up', { message, message1,message2,message3 });
+});
 app.get('/products', (req, res) => {
   res.render('specProd')
 
@@ -146,12 +161,18 @@ app.post('/signup', async (req, res) => {
     const existUser = await loginCollection.findOne({ username: data.username });
 
     if (!data.name || !data.username || !data.email || !data.password) {
-       return res.send("Fill all the fields to sign up");
+      //  return res.send("Fill all the fields to sign up");
+      req.flash('message','Fill all the fields to sign up!');
+      res.redirect('/signup');
     
     } else if (existUser) {
-      return res.send("Username already exists");
+     // return res.send("Username already exists");
+     req.flash('message1','Username already exists!');
+      res.redirect('/signup');
     } else if (!emailValidator.validate(req.body.email)) {
-      return res.send("Email is not valid");
+     //return res.send("Email is not valid");
+     req.flash('message2','Email is not valid!');
+      res.redirect('/signup');
     } else if (emailValidator.validate(req.body.email) && !validEmail) {
       // Insert data into the database
       await loginCollection.insertMany([data]);
@@ -177,7 +198,9 @@ app.post('/signup', async (req, res) => {
       // console.log(bool);
 
       if (bool == false) {
-        return res.send("There is a BlackPanda account with this email: ");
+        //return res.send("There is a BlackPanda account with this email: ");
+        req.flash('message3','There is a BlackPanda account with this email !');
+      res.redirect('/signup');
       } else {
         // Insert data into the database
         await loginCollection.insertMany([data]);
@@ -297,7 +320,7 @@ app.post('/forgotPassword', async (req,res) => {
     res.send("email sent")
 
   }else{
-    res.send("Email is not verified yet, can't change password")
+    res.send("Email is not verified yet, can't change password!")
   }
     
   } catch (error) {
