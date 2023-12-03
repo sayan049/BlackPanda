@@ -114,12 +114,12 @@ app.get('/login', (req, res) => {
 })
 app.get('/signup', (req, res) => {
   // Ensure that 'message' and 'message1' are always defined
-  const message = req.flash('message') || '';
-  const message1 = req.flash('message1') || '';
-  const message2 = req.flash('message2') || '';
-  const message3 = req.flash('message3') || '';
+  // const message = req.flash('message') || '';
+  // const message1 = req.flash('message1') || '';
+  // const message2 = req.flash('message2') || '';
+  // const message3 = req.flash('message3') || '';
 
-  res.render('sign_up', { message, message1,message2,message3 });
+  res.render('sign_up');
 });
 app.get('/products', (req, res) => {
   res.render('specProd')
@@ -162,17 +162,17 @@ app.post('/signup', async (req, res) => {
 
     if (!data.name || !data.username || !data.email || !data.password) {
       //  return res.send("Fill all the fields to sign up");
-      req.flash('message','Fill all the fields to sign up!');
-      res.redirect('/signup');
+      // req.flash('message','Fill all the fields to sign up!');
+       res.redirect('/signup');
     
     } else if (existUser) {
      // return res.send("Username already exists");
-     req.flash('message1','Username already exists!');
-      res.redirect('/signup');
+    //  req.flash('message1','Username already exists!');
+       res.redirect('/signup');
     } else if (!emailValidator.validate(req.body.email)) {
      //return res.send("Email is not valid");
-     req.flash('message2','Email is not valid!');
-      res.redirect('/signup');
+    //  req.flash('message2','Email is not valid!');
+       res.redirect('/signup');
     } else if (emailValidator.validate(req.body.email) && !validEmail) {
       // Insert data into the database
       await loginCollection.insertMany([data]);
@@ -199,8 +199,8 @@ app.post('/signup', async (req, res) => {
 
       if (bool == false) {
         //return res.send("There is a BlackPanda account with this email: ");
-        req.flash('message3','There is a BlackPanda account with this email !');
-      res.redirect('/signup');
+      //   req.flash('message3','There is a BlackPanda account with this email !');
+      // res.redirect('/signup');
       } else {
         // Insert data into the database
         await loginCollection.insertMany([data]);

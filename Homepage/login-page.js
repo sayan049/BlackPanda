@@ -13,6 +13,7 @@
 //     // Automatically erase the image after 3 seconds (3000 milliseconds)
     
 //   });
+// import loginCollection from '../server/login-data';
   
 var counter = 0;
 
