@@ -7,6 +7,7 @@ const emailValidator = require('email-validator')
 var flush=require('connect-flash')
 var session=require('express-session')
 const sendResetPasswordLink=require('./forgot-resetPassword');
+const sendVerifyMail=require('./mailVerify')
 const { loginCollection, dataname } = require('./login-data');
 
 
@@ -42,31 +43,7 @@ app.use(flush());
 //port
 const port = 3080;
 
-//for send mail
-const sendVerifyMail = async (name, email, user_id) => {
-  try {
-    const transporter = nodemailer.createTransport({
-      service: 'Gmail',
-      auth: {
-        user: 'blaackpaandaaa@gmail.com',
-        pass: 'zihz jnyp aqjh spmz'
-      }
 
-    });
-    const mailOptions = {
-      from: 'blaackpaandaaa@gmail.com',
-      to: email,
-      subject: 'For verification mail',
-      html: '<p>Hii ' + name + ', please click here to <a href="http://127.0.0.1:3080/mailVerify?user=' + user_id + '"> Verify </a> your mail. </p> '
-    }
-    const info = await transporter.sendMail(mailOptions);
-    console.log('Email sent:', info.response);
-    return true;
-  } catch (error) {
-    console.error('Failed to send verification email:', error.message);
-    return false;
-  }
-}
 
 
 
