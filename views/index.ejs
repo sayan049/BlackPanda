@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="style2.css">
     <link rel="stylesheet" href="util.css">
     <link rel="stylesheet" href="loginbackground.css">
+    <link rel="stylesheet" href="sign_up.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     
 
@@ -52,9 +53,9 @@
                                             WELCOME TO
                                         </li>
                                         <li>To access account and manage orders</li>
-                                        <li><a href="/login" > <button class="btn-login"  type="submit"
-                                                    style="size: 2em; color: red;">LOG IN/SIGN UP </button></a>
-                                        </li>
+                                        <div><a href='/login'class="btn-login"style="size: 2em; color: red;" > 
+                                                   LOG IN/SIGN UP </a>
+                                        </div>
                                     </div>
                                     <div>
                                         <li><a href=""></a>Orders</li>
@@ -207,6 +208,18 @@
         </nav>
     </header>
     <main>
+
+        <% if(messagesuc.length > 0) { %>
+            <div id="notification-container">
+                <div class="notification notification-successed" style="right: 483px; width: 539px; height: 16px;">
+                    <button class="notification-close"></button>
+                    <!-- <div class="notification-title" style="margin-top: -15px;">success!</div> -->
+                    <div class="notification-message"><%= messagesuc %></div>
+                </div>
+            </div>
+        <% } %>
+
+
         <div style="height: 15em;">
             <div class="blackpanda-animation">
                 <div id="left-side" class="side" style="height: 15em;margin-top: 114px;">

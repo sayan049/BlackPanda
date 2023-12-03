@@ -96,7 +96,9 @@ app.get('/', async (req, res) => {
   try {
     // let datas = await productdetails.exec();
     // console.log(datas); // Check the console for the retrieved data
-    res.render("index", { datanames: req.datas });
+    const messagesuc = req.flash('messagesuc') || '';
+    console.log("message success is = "+messagesuc)
+    res.render("index", { datanames: req.datas, messagesuc });
   } catch (error) {
     console.error(error.message);
     res.status(500).send("Internal Server Error");
@@ -109,17 +111,20 @@ app.get('/', async (req, res) => {
 //for log-in page
 
 app.get('/login', (req, res) => {
-  res.render('login')
-
-})
+  const message = req.flash('message') ;
+  const forgetmessage = req.flash('forgetmessage') ;
+  const forgetmessagesuccess = req.flash('forgetmessagesuccess') ;
+  //console.log('login message error is = ' + messageerrlogin)
+  res.render('login', {message,forgetmessage,forgetmessagesuccess}); // Pass messageerr to the template
+});
 app.get('/signup', (req, res) => {
   // Ensure that 'message' and 'message1' are always defined
-  // const message = req.flash('message') || '';
-  // const message1 = req.flash('message1') || '';
+  
+   const messageerr = req.flash('messageerr') ;
   // const message2 = req.flash('message2') || '';
   // const message3 = req.flash('message3') || '';
 
-  res.render('sign_up');
+  res.render('sign_up',{messageerr});
 });
 app.get('/products', (req, res) => {
   res.render('specProd')
@@ -162,18 +167,19 @@ app.post('/signup', async (req, res) => {
 
     if (!data.name || !data.username || !data.email || !data.password) {
       //  return res.send("Fill all the fields to sign up");
-      // req.flash('message','Fill all the fields to sign up!');
+       req.flash('messageerr','Fill all the fields to sign up !');
        res.redirect('/signup');
     
     } else if (existUser) {
      // return res.send("Username already exists");
-    //  req.flash('message1','Username already exists!');
+      req.flash('messageerr','Username already exists !');
        res.redirect('/signup');
     } else if (!emailValidator.validate(req.body.email)) {
      //return res.send("Email is not valid");
-    //  req.flash('message2','Email is not valid!');
+      req.flash('messageerr','Email is not valid!');
        res.redirect('/signup');
     } else if (emailValidator.validate(req.body.email) && !validEmail) {
+      
       // Insert data into the database
       await loginCollection.insertMany([data]);
       console.log(data);
@@ -182,7 +188,10 @@ app.post('/signup', async (req, res) => {
       sendVerifyMail(req.body.name, req.body.email, req.body.username);
 
       // Render the index page
-      res.render("index", { datanames: req.datas });
+      // res.render("index", { datanames: req.datas });
+      req.flash('messagesuc','you are signed up now!, verification link has been sent to your email');
+      res.redirect('/')
+
     } else if (emailValidator.validate(req.body.email) && validEmail) {
       // Use cursor to iterate over documents asynchronously
       let bool = true;
@@ -199,9 +208,14 @@ app.post('/signup', async (req, res) => {
 
       if (bool == false) {
         //return res.send("There is a BlackPanda account with this email: ");
-      //   req.flash('message3','There is a BlackPanda account with this email !');
-      // res.redirect('/signup');
+         req.flash('messageerr','This Email is already in use !');
+       res.redirect('/signup');
       } else {
+
+      //  req.flash('messagesuc','you are signed up now!');
+      //  res.redirect('/signup');
+
+
         // Insert data into the database
         await loginCollection.insertMany([data]);
         console.log(data);
@@ -210,7 +224,9 @@ app.post('/signup', async (req, res) => {
         sendVerifyMail(req.body.name, req.body.email, req.body.username);
 
         // Render the index page
-        res.render("index", { datanames: req.datas });
+        //res.render("index", { datanames: req.datas });
+        req.flash('messagesuc','you are signed up now!, verification link has been sent to your email');
+        res.redirect('/')
       }
     } else {
       return res.status(500).send("Internal server error");
@@ -260,27 +276,39 @@ app.post('/login', async (req, res) => {
     const check = await loginCollection.findOne({ username: req.body.username });
     
     if (!req.body.username) {
-      return res.send("username can't empty")
+      //return res.send("username can't empty")
+      req.flash('message',"username can't empty");
+      res.redirect('/login')
 
     }
     else if (!check) {
-      return res.send("username not found");
+      //return res.send("username not found");
+      req.flash('message',"username not found");
+      res.redirect('/login')
+
+
     }else if(check && check.is_verified == 1){
       const isPasswordMatch = await bcrypt.compare(req.body.password, check.password);
       if (isPasswordMatch) {
-        res.render('index', { datanames: req.datas })
+       // res.render('index', { datanames: req.datas })
+       req.flash('messagesuc','Logged in successfully');
+        res.redirect('/')
       } else {
-        return res.send("wrong password");
+        //return res.send("wrong password");
+        req.flash('message',"wrong password");
+      res.redirect('/login')
       }
 
     }else{
-      return res.send("Your email is not verified, please verify your email ");
+      //return res.send("Your email is not verified, please verify your email ");
+      req.flash('message',"Your email is not verified, please verify your email ");
+      res.redirect('/login')
     }
 
    
   } catch {
     res.send("wrong details")
-
+    // req.flash('x',"wrong details");
   }
 })
 
@@ -312,15 +340,22 @@ app.post('/forgotPassword', async (req,res) => {
   // console.log(findEmail.is_verified);
 
   if(!mail){
-   return res.json("mail can't be empty");
+   //return res.json("mail can't be empty");
+   req.flash('forgetmessage',"mail can't be empty");
+   res.redirect('/login');
+
   }else if(emailValidator.validate(mail) && !findEmail){
     return res.send("email not found");
   }else if(emailValidator.validate(mail) && findEmail && boolean == false){
     sendResetPasswordLink(nameForreset,usernameForreset,mail);
-    res.send("email sent")
+    //res.send("email sent")
+    req.flash('forgetmessagesuccess',"Email sent successfully !");
+   res.redirect('/login');
 
   }else{
-    res.send("Email is not verified yet, can't change password!")
+    //res.send("Email is not verified yet, can't change password!")
+    req.flash('forgetmessage',"Email is not verified yet, can't change password!");
+   res.redirect('/login');
   }
     
   } catch (error) {
