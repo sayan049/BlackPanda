@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="util.css">
     <link rel="stylesheet" href="style2.css">
     <link rel="stylesheet" href="log-in_page.css">
+    <link rel="stylesheet" href="sign_up.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     
 
@@ -67,7 +68,35 @@
         </nav>
     </header>
     <main>
+
+   
+
         <div class="main_log-in_body">
+
+            <%  if(message.length > 0) { %>
+                <div id="notification-container">
+                    <div class="notification notification-error">
+                         <div class="notification-message"><%= message %></div>
+                    </div>
+                </div>
+            <% }  %>
+
+            <%  if(forgetmessage.length > 0) { %>
+                <div id="notification-container">
+                    <div class="forgetnotification notification-error">
+                         <div class="notification-message"><%= forgetmessage %></div>
+                    </div>
+                </div>
+            <% }  %>
+
+            <%  if(forgetmessagesuccess.length > 0) { %>
+                <div id="notification-container">
+                    <div class="forgetnotification notification-success">
+                         <div class="notification-message"><%= forgetmessagesuccess %></div>
+                    </div>
+                </div>
+            <% }  %>
+
             <form action="/forgotPassword" method="post">
             <div class="popup_backdrop" id="popup">
             <div class="popup" >
@@ -115,7 +144,9 @@
             </svg> -->
 
             </div>
+           
             <div class="rightside" >
+
                
                 <form action="/login" method="post">
                 <div class="login_box">

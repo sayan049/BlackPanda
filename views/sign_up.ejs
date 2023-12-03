@@ -72,6 +72,20 @@
             <!-- <div style="width: 100%;display: flex;justify-content: center;height: 30px;position: absolute;z-index: 1;">
             <div class="pop" style="margin-top: 4px;" id="pop"></div></div> -->
 
+
+            <% if(messageerr.length > 0) { %>
+                <div id="notification-container">
+                    <div class="notification notification-error">
+                        <!-- <button class="notification-close"></button> -->
+                        <!-- <div class="notification-title">Error!</div> -->
+                        <div class="notification-message"><%= messageerr %></div>
+                    </div>
+                </div>
+            <% } %>
+
+            
+            
+
             <div class="leftside">
                 <div class="logo-panda-login"><img src="img/sex with benefits.png"
                         alt=""><div class="image-bubble">
