@@ -29,7 +29,7 @@ app.use(express.static(productpagepath))
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.set("view engine", "ejs");
-app.set('views', path.join(__dirname, '../'))
+app.set('views', path.join(__dirname, '../views'))
 app.use(session({
   secret:'secret',
   cookie:{maxAge: 60000},
@@ -41,7 +41,7 @@ app.use(flush());
 
 
 //port
-const port = 3080;
+const port = process.env.PORT||3080;
 
 
 
