@@ -1,0 +1,6 @@
+{
+    "$schema": "https://openapi.vercel.sh/vercel.json",
+    "devCommand": "nodemon index.js",
+    "buildCommand": "npm install"
+  
+}
