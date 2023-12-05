@@ -1,0 +1,6 @@
+{
+    "$schema": "https://openapi.vercel.sh/vercel.json",
+    "devCommand": "pnpm start",
+    "buildCommand": "echo hello",
+    "outputDirectory": "server"
+}
