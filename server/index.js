@@ -1,7 +1,7 @@
 const { error } = require('console');
 const express = require('express')
 const path = require('path')
-// const bcrypt = require('bcrypt')
+const bcrypt = require('bcrypt')
 const nodemailer = require('nodemailer')
 const emailValidator = require('email-validator')
 var flush=require('connect-flash')
