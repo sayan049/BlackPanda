@@ -24,7 +24,7 @@ const ejsEnginePath = path.join(__dirname, '../views');
 
 //Routes
 const app = express();
-//app.use(express.static(Homepagepath))
+app.use(express.static(Homepagepath))
 app.use(express.static(productpagepath))
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
