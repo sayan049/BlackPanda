@@ -19,7 +19,7 @@ const sendResetPasswordLink = async (name,  username,email) => {
         from: 'blaackpaandaaa@gmail.com',
         to: email,
         subject: 'For reseting password',
-        html: '<p>Hii ' + name + ', please click here to <a href="http://127.0.0.1:3080/resetPassword?user=' + username + '"> reset </a> your password. </p> '
+        html: ``
       }
       const info = await transporter.sendMail(mailOptions);
       console.log('Email sent:', info.response);
