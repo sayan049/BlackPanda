@@ -50,9 +50,6 @@ const loginCollection= new mongoose.model("loginCollection",loginSchema)
 // module.exports=loginCollection
 
 const productSchema=new mongoose.Schema({
-    id:{
-        type:Number
-    },
     link:{
         type:String
 
@@ -64,6 +61,9 @@ const productSchema=new mongoose.Schema({
             type:Array
         },
         price:{
+            type:String
+        },
+        Gender:{
             type:String
         }
 })
