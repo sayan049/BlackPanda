@@ -8,9 +8,12 @@
     margin-left: 25px;
     height: 40px;
     width:245px;
-    border-radius: 10px;
+    
    outline: none;
     border:2px solid rgb(172, 197, 194);
+    border-top: none;
+    border-left: none;
+    border-right: none;
     
 }
 .lower_middle_text{
@@ -23,20 +26,29 @@
     margin-left: 25px;
     height: 40px;
     width:245px;
-    border-radius: 10px;
+    
    outline: none;
     border:2px solid rgb(172, 197, 194);
+    border-top: none;
+    border-left: none;
+    border-right: none;
     
 }
 #ph-n:hover  {
     border: 2px solid rgb(42, 157, 143);
+    border-top: none;
+    border-left: none;
+    border-right: none;
   }
   #e:hover  {
     border: 2px solid rgb(42, 157, 143);
+    border-top: none;
+    border-left: none;
+    border-right: none;
   }
   .sign{
 
-    padding-left: 20px;
+    /* padding-left: 20px; */
   }
   .name-pop{
     position: absolute;
