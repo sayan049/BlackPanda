@@ -219,6 +219,7 @@
     <main>
 
         <% if(messagesuc.length > 0) { %>
+            <div class="notificationdiv">
             <div id="notification-container">
                 <div class="notification notification-successed" style="right: 483px; width: 539px; height: 16px;">
                     <button class="notification-close"></button>
@@ -226,9 +227,10 @@
                     <div class="notification-message"><%= messagesuc %></div>
                 </div>
             </div>
+        </div>
         <% } %>
 
-
+ 
         <div style="height: 15em;">
             <div class="blackpanda-animation">
                 <div id="left-side" class="side" style="height: 15em;margin-top: 114px;">

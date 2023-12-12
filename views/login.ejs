@@ -81,29 +81,7 @@
 
         <div class="main_log-in_body">
 
-            <%  if(message.length > 0) { %>
-                <div id="notification-container">
-                    <div class="notification notification-error">
-                         <div class="notification-message"><%= message %></div>
-                    </div>
-                </div>
-            <% }  %>
-
-            <%  if(forgetmessage.length > 0) { %>
-                <div id="notification-container">
-                    <div class="forgetnotification notification-error">
-                         <div class="notification-message"><%= forgetmessage %></div>
-                    </div>
-                </div>
-            <% }  %>
-
-            <%  if(forgetmessagesuccess.length > 0) { %>
-                <div id="notification-container">
-                    <div class="forgetnotification notification-success">
-                         <div class="notification-message"><%= forgetmessagesuccess %></div>
-                    </div>
-                </div>
-            <% }  %>
+            
 
             <form action="/forgotPassword" method="post">
             <div class="popup_backdrop" id="popup">
@@ -166,7 +144,35 @@
             </div>
            
             <div class="rightside" >
-
+                <%  if(message.length > 0) { %>
+                    <div class="notificationdiv">
+                    <div id="notification-container">
+                        <div class="notification notification-error">
+                             <div class="notification-message"><%= message %></div>
+                        </div>
+                    </div>
+                </div>
+                <% }  %>
+    
+                <%  if(forgetmessage.length > 0) { %>
+                    <div class="notificationdiv">
+                    <div id="notification-container">
+                        <div class="forgetnotification notification-error">
+                             <div class="notification-message"><%= forgetmessage %></div>
+                        </div>
+                    </div>
+                </div>
+                <% }  %>
+    
+                <%  if(forgetmessagesuccess.length > 0) { %>
+                    <div class="notificationdiv">
+                    <div id="notification-container">
+                        <div class="forgetnotification notification-success">
+                             <div class="notification-message"><%= forgetmessagesuccess %></div>
+                        </div>
+                    </div>
+                </div>
+                <% }  %>
                
                 <form action="/login" method="post">
                 <div class="login_box">
