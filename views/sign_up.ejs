@@ -81,16 +81,7 @@
             <div class="pop" style="margin-top: 4px;" id="pop"></div></div> -->
 
 
-            <% if(messageerr.length > 0) { %>
-                <div id="notification-container">
-                    <div class="notification notification-error">
-                        <!-- <button class="notification-close"></button> -->
-                        <!-- <div class="notification-title">Error!</div> -->
-                        <div class="notification-message"><%= messageerr %></div>
-                    </div>
-                </div>
-            <% } %>
-
+           
             
             
 
@@ -136,6 +127,18 @@
 
             </div>
             <div class="rightside" >
+                <% if(messageerr.length > 0) { %>
+                    <div class="notificationdiv">
+                    <div id="notification-container">
+                        <div class="notification notification-error">
+                            <!-- <button class="notification-close"></button> -->
+                            <!-- <div class="notification-title">Error!</div> -->
+                            <div class="notification-message"><%= messageerr %></div>
+                        </div>
+                    </div>
+                </div>
+                <% } %>
+    
                
                 <form action="signup" method="post">
                 <div class="login_box">
