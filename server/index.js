@@ -74,7 +74,7 @@ app.get('/', async (req, res) => {
     // let datas = await productdetails.exec();
     // console.log(datas); // Check the console for the retrieved data
     const messagesuc = req.flash('messagesuc') || '';
-    console.log("message success is = "+messagesuc)
+    // console.log("message success is = "+messagesuc)
     res.render("index", { datanames: req.datas, messagesuc });
   } catch (error) {
     console.error(error.message);
@@ -166,8 +166,8 @@ app.post('/signup', async (req, res) => {
 
       // Render the index page
       // res.render("index", { datanames: req.datas });
-      req.flash('messagesuc','you are signed up now!, verification link has been sent to your email');
-      res.redirect('/')
+      req.flash('forgetmessagesuccess','you are signed up now!, verification link has been sent to your email');
+      res.redirect('/login')
 
     } else if (emailValidator.validate(req.body.email) && validEmail) {
       // Use cursor to iterate over documents asynchronously
@@ -202,8 +202,8 @@ app.post('/signup', async (req, res) => {
 
         // Render the index page
         //res.render("index", { datanames: req.datas });
-        req.flash('messagesuc','you are signed up now!, verification link has been sent to your email');
-        res.redirect('/')
+        req.flash('forgetmessagesuccess','you are signed up now!, verification link has been sent to your email');
+        res.redirect('/login')
       }
     } else {
       return res.status(500).send("Internal server error");

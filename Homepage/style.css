@@ -705,3 +705,36 @@ root, .ghost-input[type=text] {
 DISPLAY: flex;
 justify-content: space-between;
  }
+
+ .ss{
+  
+  width: 17vw;
+  height: 1px;
+  /* border-left: crimson; */
+  border: 2px solid rgb(42,157,143);
+  border-radius: 25px;
+  outline: none;
+  padding: 17px;
+ 
+
+ }
+ .index-search{
+  left: -8px;
+  position: relative;
+  top: -6.5px;
+ }
+ .ss:hover{
+  border: 2px solid  rgb(5,98,98);
+ }
+ .ddd{
+  height: 21px;
+    position: absolute;
+    left: -29px;
+    top: 8px;
+ 
+
+ }
+ .dd{
+  position: absolute;
+  border: none;
+ }
