@@ -58,17 +58,27 @@
   }
   #notification-container {
     display: block;
-    position: absolute;
+    /* position: absolute; */
     top: 10px;
     right: 10px;
+}
+.notificationdiv{
+    width: 100%;
+  display: flex;
+  position: absolute;
+  justify-content: center;
+  align-content: start;
+  align-items: end;
+  top: 4px;
+
 }
 
 .notification {
     display: block;
-    position: relative;
-    padding: 15px 15px 15px 60px;
+    /* position: relative; */
+    padding: 15px 15px 15px 15px;
     overflow: hidden;
-    width: 250px;
+    /* width: 250px; */
     border-radius: 5px;
     color: #fff;
     -webkit-animation: show-notification 3s ease-out;
@@ -76,14 +86,15 @@
     /* animation: name duration timing-function delay iteration-count direction fill-mode; */
     animation-iteration-count: 1;
     opacity: 0;
-    top: 105px;
-  right: 204px;
+    /* top: 105px;
+  right: 204px; */
   z-index: 3;
 }
 .forgetnotification{
     display: block;
-  position: relative;
-  padding: 15px 15px 15px 60px;
+  /* position: relative; */
+  text-align: center;
+  padding: 15px 15px 15px 15px;
   overflow: hidden;
   width: 250px;
   border-radius: 5px;
@@ -137,7 +148,7 @@
     font-family: 'FontAwesome';
     font-size: 35px;
     display: block;
-    position: absolute;
+    /* position: absolute; */
     left: 15px;
     top: 50%;
     -webkit-transform: translateY(-50%);
@@ -153,11 +164,11 @@
 }
 
 .notification-success::before {
-    content: '\f058';
+    /* content: '\f058'; */
 }
 
 .notification-successed::before {
-    content: '\f058';
+    /* content: '\f058'; */
     bottom: -12.2px;
 
 }
@@ -167,7 +178,15 @@
 }
 
 .notification-error::before {
-    content: '\f057';
+    /* content: '\f057'; */
+    font-family: 'FontAwesome';
+  font-size: 35px;
+  display: block;
+  position: absolute;
+  left: 190px;
+  top: 24px;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
 }
 
 .notification-info {
@@ -184,6 +203,9 @@
 
 .notification-warning::before {
     content: '\f071';
+}
+.notification-message{
+    font-size: 16px;
 }
 
 @-webkit-keyframes show-notification {
