@@ -72,10 +72,20 @@
   top: 4px;
 
 }
+.notificationdivindex{
+    width: 100%;
+  display: flex;
+  position: absolute;
+  justify-content: center;
+  align-content: start;
+  align-items: end;
+  top: 120px;
+
+}
 
 .notification {
     display: block;
-    /* position: relative; */
+    /* position: fixed; */
     padding: 15px 15px 15px 15px;
     overflow: hidden;
     /* width: 250px; */
@@ -88,7 +98,24 @@
     opacity: 0;
     /* top: 105px;
   right: 204px; */
-  z-index: 3;
+  z-index: 1000;
+}
+.notification1 {
+    display: block;
+     position: fixed; 
+    padding: 15px 15px 15px 15px;
+    overflow: hidden;
+    /* width: 250px; */
+    border-radius: 5px;
+    color: #fff;
+    -webkit-animation: show-notification 3s ease-out;
+    animation: show-notification 3s ease-out;
+    /* animation: name duration timing-function delay iteration-count direction fill-mode; */
+    animation-iteration-count: 1;
+    opacity: 0;
+    /* top: 105px;
+  right: 204px; */
+  z-index: 1000;
 }
 .forgetnotification{
     display: block;
@@ -96,7 +123,7 @@
   text-align: center;
   padding: 15px 15px 15px 15px;
   overflow: hidden;
-  width: 250px;
+  /* width: 250px; */
   border-radius: 5px;
   color: #fff;
   -webkit-animation: show-notification 3s ease-out;
