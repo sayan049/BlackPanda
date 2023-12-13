@@ -462,11 +462,7 @@ padding: 19px;}
 }
 
 /* Media Query for smaller screens */
-@media (max-width: 768px) {
-  .line-1 {
-      font-size: 50%; /* Adjust font size for smaller screens */
-  }
-}
+
 
 
 
@@ -730,6 +726,158 @@ font-size: 20px;
  
  
   
+}
+.logo-loginm{
+  height: 190px;position: absolute;top: -3.5rem;
+}
+
+
+
+
+@media  (max-width: 431px) {
+  /* Adjust styles for screens with a maximum width of 600px (typical for mobile devices) */
+  .logo-loginm {
+    height: 135px;
+    top: -25px;
+    left: 27px;
+    position: absolute;
+  }
+}
+@media  (max-width: 431px) {
+  .ss{
+    width: 30vw;
+    
+    border: 1px solid rgb(42,157,143);
+    border-radius: 25px;
+    outline: none;
+   
+    position: absolute;
+    left: -8.5rem;
+    padding-left: 30px;
+    padding-right: 25px
+  }
+  .ss:hover {
+    border: 1px solid rgb(5,98,98);
+}
+
+  .ddd{
+    height: 21px;
+    position: absolute;
+    left: -8rem;
+    top: 10px;
+  }
+  .left{
+    max-width: 75vw;
+  }
+
+
+.leftside {
+  position: absolute;
+  /* float: left; */
+  height: calc(100vh - 114px);
+  width: 100%;
+  overflow: hidden;
+  
+  /* box-shadow: 0 5px 15px rgb(0 2 0 / 0.7); */
+  background: linear-gradient( 180deg ,rgb(32, 136, 124),rgb(39, 76, 90));
+
+
+}
+
+  .line-1 {
+      font-size: 17px; /* Adjust font size for smaller screens */
+      top: -85px;
+  }
+  .rightside {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    float: right;
+    height: calc(100vh - 114px);
+    width: 100%;
+    left: 0%;
+}
+.word span{
+  font-size: 27px;
+}
+.signin-title{
+  opacity: 0;
+}
+.notlogin {
+  color: white;
+  margin-top: 3rem;
+  font-size: 17px;
+  position: absolute;
+   bottom: 6rem; 
+}
+
+  .createsign {
+    display: flex;
+    height: 3rem;
+    width: 8rem;
+    cursor: pointer;
+    text-decoration: none;
+    color: white;
+    background-color: #fff;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    position: absolute;
+    
+    background-color: rgb(71, 122, 145);
+    bottom: 2rem;
+}
+
+
+
+
+
+}
+@media (max-height:741px) {
+  .word span{
+    font-size: 23px;
+    
+  }
+  .word {
+    /* font-family: 'Anton', sans-serif; */
+    perspective: 1000px;
+    margin-top: 65px;
+    text-align: center;
+    margin-top: 9px;
+}
+.Login_title{
+  font-size: 20px;
+}
+
+.upper_text{
+  margin-top: 0em;
+}
+.googlee{
+  height: 36px;
+    width: 36px;
+    
+}
+.facebookk{
+  height: 36px;
+    width: 36px;
+}
+.g-f_icons{
+  height: 3em;
+  width: 156px;
+}
+.notlogin {
+  color: white;
+  margin-top: 3rem;
+  font-size: 14px;
+  position: absolute;
+  bottom: 4rem;
+}
+.createsign{
+  height: 34px;
+    width: 106px;
+    bottom: 1rem;;
+}
 }
 
 
