@@ -147,14 +147,23 @@
           background-color: #fcfcfa;
         }
 }
-.g-f_icons{
+.g-f_iconss{
     display: flex;
     height: 5em;
-    width: 10em;
+    
     /* background-color: #1221f0; */
     justify-content: center;
     align-items: center;
     margin-right: 5em;
+}
+.g-f_icons{
+  display: flex;
+  height: 5em;
+  
+  /* background-color: #1221f0; */
+  justify-content: center;
+  align-items: center;
+  margin-right: 5em;
 }
 .googlee{
     display: flex;
@@ -424,7 +433,7 @@ padding: 19px;}
 .line-1 {
   position: relative;
   top: 1rem;
-  width: 80%; /* Change width to a percentage for responsiveness */
+  width: 75%; /* Change width to a percentage for responsiveness */
   max-width: 24em; /* Add max-width to limit the width on larger screens */
   margin: 0 auto;
   border-right: 2px solid rgba(255, 255, 255, 0.75);
@@ -447,7 +456,7 @@ padding: 19px;}
   }
 
   to {
-      width: 45%; /* Change to 100% for full width */
+      width: 33%; /* Change to 100% for full width */
   }
 }
 
@@ -730,20 +739,21 @@ font-size: 20px;
 .logo-loginm{
   height: 190px;position: absolute;top: -3.5rem;
 }
+.a{
+  margin-top: -2px; font-size: 30px
+}
+
 
 
 
 
 @media  (max-width: 431px) {
-  /* Adjust styles for screens with a maximum width of 600px (typical for mobile devices) */
   .logo-loginm {
     height: 135px;
     top: -25px;
     left: 27px;
     position: absolute;
   }
-}
-@media  (max-width: 431px) {
   .ss{
     width: 30vw;
     
@@ -788,6 +798,15 @@ font-size: 20px;
       font-size: 17px; /* Adjust font size for smaller screens */
       top: -85px;
   }
+  @keyframes typewriter {
+    from {
+        width: 0;
+    }
+  
+    to {
+        width: 43%; /* Change to 100% for full width */
+    }
+  }
   .rightside {
     display: flex;
     align-items: center;
@@ -800,6 +819,9 @@ font-size: 20px;
 }
 .word span{
   font-size: 27px;
+}
+.signp{
+  margin-top: 3rem;
 }
 .signin-title{
   opacity: 0;
@@ -824,19 +846,33 @@ font-size: 20px;
     justify-content: center;
     border-radius: 20px;
     position: absolute;
+    z-index: 1;
     
     background-color: rgb(71, 122, 145);
     bottom: 2rem;
 }
+.login_box {
+  /* height: calc((100vh - 114px) - 8em); */
+  width: 20em;
+  display: flex;
+  justify-content: center;
+  background-color: white;
+  height: 37rem;
+  border-radius: 8px;
+}
+.loginp{
+  height: 32em;
+}
 
 
 
 
 
 }
-@media (max-height:741px) {
+@media (max-width:380px) {
   .word span{
     font-size: 23px;
+    z-index: 1;
     
   }
   .word {
@@ -876,8 +912,57 @@ font-size: 20px;
 .createsign{
   height: 34px;
     width: 106px;
-    bottom: 1rem;;
+    bottom: 1rem;
+    z-index: 1;
 }
+@keyframes typewriter {
+  from {
+      width: 0;
+  }
+
+  to {
+      width: 47%; /* Change to 100% for full width */
+  }
+}
+.loginp {
+  height: 27em;
+}
+
+ .signpp {
+  
+  position: relative;
+  outline: 0;
+  border: 0;
+  color: rgb(38, 70, 83);
+  text-align: center;
+  height: 3.5em;
+  opacity: .5;
+  margin-top: 15px;
+  
+} 
+.g-f_iconss{
+  height: 4em;
+  margin-left: -5px;
+}
+
+
+
+.login_box {
+  /* height: calc((100vh - 114px) - 8em); */
+  width: 20em;
+  display: flex;
+  justify-content: center;
+  background-color: white;
+  height: 28rem;
+  border-radius: 8px;
+}
+.a{
+  font-size: 24px;
+}
+.signupbtn{
+  height: 86px;
+}
+
 }
 
 
