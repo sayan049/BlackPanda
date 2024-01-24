@@ -1,6 +1,6 @@
 const mongoose=require("mongoose")
 // const mongoUrl="mongodb+srv://sayan049:YBAnsRI4EcsOalps@cluster0.5ynm4va.mongodb.net/login-data?retryWrites=true&w=majority"
-const mongoUrl="mongodb+srv://BlackPanda:4D5w06JRL9FjIgOE@blacpandacluster.oodizbz.mongodb.net/BlackPanda?retryWrites=true&w=majority"
+const mongoUrl="mongodb+srv://BlackPanda:Akil17GhrPEdxH28@blacpandacluster.oodizbz.mongodb.net/BlackPanda?retryWrites=true&w=majority"
 
 const connectionsParams={
     useNewUrlParser:true,
